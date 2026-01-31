@@ -1,6 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowDown, Download, FileText, Github, Sparkles } from 'lucide-react';
+// Import image directly to ensure Vite handles the path correctly
+import profileImg from '../../public/Amal.png';
 
 export const HeroSection = () => {
     return (
@@ -42,7 +44,7 @@ export const HeroSection = () => {
                         {/* Glass circular card with image */}
                         <div className="relative w-full h-full glass-panel rounded-full overflow-hidden border-4 border-white/20 shadow-2xl">
                             <img
-                                src="/Amal.png"
+                                src={profileImg}
                                 alt="Amal Madhu - Mixed-Signal Electronics Engineer"
                                 className="w-full h-full object-cover scale-100"
                                 onError={(e) => {
