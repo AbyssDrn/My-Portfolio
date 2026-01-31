@@ -30,40 +30,44 @@ export const FloatingDock = () => {
             initial={{ y: -100, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="fixed top-6 left-1/2 transform -translate-x-1/2 glass-dock rounded-full px-4 py-3 flex items-center gap-3 z-50 max-w-[95vw] overflow-x-auto hide-scrollbar"
+            className="fixed top-4 md:top-6 left-1/2 transform -translate-x-1/2 glass-dock rounded-full px-3 md:px-4 py-2 md:py-3 flex items-center justify-between md:justify-center gap-1 md:gap-3 z-50 w-[95vw] md:w-auto max-w-fit overflow-x-auto hide-scrollbar touch-pan-x"
         >
-            {navItems.map((item) => (
+            <div className="flex items-center gap-1 md:gap-3">
+                {navItems.map((item) => (
+                    <button
+                        key={item.id}
+                        onClick={() => scrollToSection(item.id)}
+                        className="group relative flex flex-col items-center flex-shrink-0"
+                    >
+                        <div className="p-1.5 md:p-2 rounded-full hover:bg-white/10 transition-colors text-gray-400 group-hover:text-white">
+                            <item.icon size={16} className="md:w-[18px] md:h-[18px]" />
+                        </div>
+
+                        {/* Tooltip - Hidden on mobile, visible on desktop hover */}
+                        <span className="hidden md:block absolute -bottom-8 opacity-0 group-hover:opacity-100 transition-opacity text-xs font-mono bg-black/80 px-2 py-1 rounded text-white whitespace-nowrap pointer-events-none">
+                            {item.label}
+                        </span>
+                    </button>
+                ))}
+            </div>
+
+            {/* Theme Toggle Section - Fixed to right on mobile if possible, or just part of flow */}
+            <div className="flex items-center flex-shrink-0 pl-1 md:pl-0 border-l border-white/10 ml-1 md:ml-0 md:border-l-0">
+                <div className="hidden md:block h-6 w-px bg-white/10 mx-1" /> {/* Desktop Divider */}
                 <button
-                    key={item.id}
-                    onClick={() => scrollToSection(item.id)}
+                    onClick={toggleTheme}
                     className="group relative flex flex-col items-center flex-shrink-0"
+                    aria-label="Toggle theme"
                 >
-                    <div className="p-2 rounded-full hover:bg-white/10 transition-colors text-gray-400 group-hover:text-white">
-                        <item.icon size={18} />
+                    <div className="p-1.5 md:p-2 rounded-full hover:bg-white/10 transition-colors text-gray-400 group-hover:text-white">
+                        {isDark ? <Sun size={16} className="md:w-[18px] md:h-[18px]" /> : <Moon size={16} className="md:w-[18px] md:h-[18px]" />}
                     </div>
 
-                    {/* Tooltip */}
-                    <span className="absolute -bottom-8 opacity-0 group-hover:opacity-100 transition-opacity text-xs font-mono bg-black/80 px-2 py-1 rounded text-white whitespace-nowrap pointer-events-none">
-                        {item.label}
+                    <span className="hidden md:block absolute -bottom-8 opacity-0 group-hover:opacity-100 transition-opacity text-xs font-mono bg-black/80 px-2 py-1 rounded text-white whitespace-nowrap pointer-events-none">
+                        {isDark ? 'Light' : 'Dark'}
                     </span>
                 </button>
-            ))}
-
-            {/* Theme Toggle */}
-            <div className="h-6 w-px bg-white/10 mx-1" />
-            <button
-                onClick={toggleTheme}
-                className="group relative flex flex-col items-center flex-shrink-0"
-                aria-label="Toggle theme"
-            >
-                <div className="p-2 rounded-full hover:bg-white/10 transition-colors text-gray-400 group-hover:text-white">
-                    {isDark ? <Sun size={18} /> : <Moon size={18} />}
-                </div>
-
-                <span className="absolute -bottom-8 opacity-0 group-hover:opacity-100 transition-opacity text-xs font-mono bg-black/80 px-2 py-1 rounded text-white whitespace-nowrap pointer-events-none">
-                    {isDark ? 'Light' : 'Dark'}
-                </span>
-            </button>
+            </div>
         </motion.div>
     );
 };
