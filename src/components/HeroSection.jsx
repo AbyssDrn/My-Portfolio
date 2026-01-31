@@ -76,20 +76,21 @@ export const HeroSection = () => {
                             transition={{ duration: 3, repeat: Infinity, delay: 1 }}
                         />
                     </div>
+
+                    {/* Floating badge - SOLID BACKGROUND (No Haze) */}
+                    <motion.div
+                        className="absolute -bottom-12 left-1/2 -translate-x-1/2 bg-black text-white px-6 py-2 rounded-full border border-white/20 shadow-xl z-20 whitespace-nowrap"
+                        initial={{ y: 20, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition={{ delay: 0.6 }}
+                        whileHover={{ scale: 1.05 }}
+                        style={{ backgroundColor: '#000000' }} // Force solid black by default
+                    >
+                        {/* Light mode specific background via CSS override to be SOLID WHITE */}
+                        <span className="text-sm font-bold text-gradient-6">Polymath • VLSI Engineer</span>
+                    </motion.div>
                 </motion.div>
 
-                {/* Floating badge - SOLID BACKGROUND (No Haze) */}
-                <motion.div
-                    className="absolute -bottom-12 left-1/2 -translate-x-1/2 bg-black text-white px-6 py-2 rounded-full border border-white/20 shadow-xl z-20 whitespace-nowrap"
-                    initial={{ y: 20, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{ delay: 0.6 }}
-                    whileHover={{ scale: 1.05 }}
-                    style={{ backgroundColor: '#000000' }} // Force solid black by default
-                >
-                    {/* Light mode specific background via CSS override to be SOLID WHITE */}
-                    <span className="text-sm font-bold text-gradient-6">Polymath • VLSI Engineer</span>
-                </motion.div>
 
                 <motion.h1
                     initial={{ y: 20, opacity: 0 }}
