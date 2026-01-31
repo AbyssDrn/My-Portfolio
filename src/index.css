@@ -174,6 +174,13 @@ html.light .text-gradient-6 {
   background-clip: text;
 }
 
+/* Specific override for badge in light mode */
+html.light .bg-black\/80 {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  border-color: rgba(139, 92, 246, 0.3) !important;
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.2) !important;
+}
+
 /* Light mode accent colors - bright and vivid */
 html.light .text-cyan-400 {
   color: #22d3ee !important;

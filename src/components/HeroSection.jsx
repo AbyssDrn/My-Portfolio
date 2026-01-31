@@ -76,17 +76,21 @@ export const HeroSection = () => {
                             transition={{ duration: 3, repeat: Infinity, delay: 1 }}
                         />
 
-                        {/* Floating badge */}
-                        <motion.div
-                            className="absolute -bottom-6 left-1/2 -translate-x-1/2 glass-panel px-6 py-2 rounded-full border border-white/20 shadow-lg"
-                            initial={{ y: 20, opacity: 0 }}
-                            animate={{ y: 0, opacity: 1 }}
-                            transition={{ delay: 0.6 }}
-                            whileHover={{ scale: 1.05 }}
-                        >
                             <span className="text-sm font-bold text-gradient-6">Polymath • VLSI Engineer</span>
                         </motion.div>
                     </div>
+                    
+                    {/* Floating badge - MOVED OUTSIDE to prevent overlap issues */}
+                    <motion.div
+                        className="absolute -bottom-10 left-1/2 -translate-x-1/2 bg-black/80 backdrop-blur-md px-6 py-2 rounded-full border border-white/20 shadow-xl z-20 whitespace-nowrap"
+                        initial={{ y: 20, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition={{ delay: 0.6 }}
+                        whileHover={{ scale: 1.05 }}
+                    >
+                        {/* Light mode specific background via CSS override in index.css */}
+                        <span className="text-sm font-bold text-gradient-6">Polymath • VLSI Engineer</span>
+                    </motion.div>
                 </motion.div>
 
                 <motion.h1
@@ -136,44 +140,44 @@ export const HeroSection = () => {
                     From underwater vision systems to neuromorphic circuits—building intelligent hardware at Digital University Kerala
                 </motion.p>
 
-                {/* Philosophy */}
-                <motion.div
-                    initial={{ y: 20, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{ delay: 0.7 }}
-                    className="glass-panel px-6 py-4 rounded-2xl mb-6 max-w-3xl border border-purple-500/20"
-                >
-                    <p className="text-sm text-gray-300 leading-relaxed">
-                        <span className="text-gradient-6 font-bold">"I don't believe in impossibility."</span> Every field, every domain holds potential waiting to be discovered. With resolve, patience, discipline, and an adaptive will, I explore every avenue of knowledge—from electronics to AI, quantum to biology—seeking connections, recognizing natural talents, and integrating them into revolutionary innovations. Learning is not a phase; it's my <span className="text-cyan-400 font-semibold">eternal passion</span>.
-                    </p>
-                </motion.div>
+                {/* Philosophy */ }
+    <motion.div
+        initial={{ y: 20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 0.7 }}
+        className="glass-panel px-6 py-4 rounded-2xl mb-6 max-w-3xl border border-purple-500/20"
+    >
+        <p className="text-sm text-gray-300 leading-relaxed">
+            <span className="text-gradient-6 font-bold">"I don't believe in impossibility."</span> Every field, every domain holds potential waiting to be discovered. With resolve, patience, discipline, and an adaptive will, I explore every avenue of knowledge—from electronics to AI, quantum to biology—seeking connections, recognizing natural talents, and integrating them into revolutionary innovations. Learning is not a phase; it's my <span className="text-cyan-400 font-semibold">eternal passion</span>.
+        </p>
+    </motion.div>
 
-                {/* Family Pride */}
-                <motion.div
-                    initial={{ y: 20, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{ delay: 0.75 }}
-                    className="text-sm text-gray-400 mb-6"
-                >
-                    <p>
-                        <span className="font-semibold text-emerald-400">Proud son</span> of an <span className="text-orange-400 font-bold">Indian Army Soldier</span> 🇮🇳 |
-                        Grateful for my loving mother & brother—my best friends who truly know me
-                    </p>
-                </motion.div>
+    {/* Family Pride */ }
+    <motion.div
+        initial={{ y: 20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 0.75 }}
+        className="text-sm text-gray-400 mb-6"
+    >
+        <p>
+            <span className="font-semibold text-emerald-400">Proud son</span> of an <span className="text-orange-400 font-bold">Indian Army Soldier</span> 🇮🇳 |
+            Grateful for my loving mother & brother—my best friends who truly know me
+        </p>
+    </motion.div>
 
-                {/* Values & Relationships Quote */}
-                <motion.div
-                    initial={{ y: 20, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{ delay: 0.78 }}
-                    className="glass-panel px-6 py-4 rounded-2xl mb-6 max-w-3xl border border-cyan-500/20"
-                >
-                    <p className="text-sm text-gray-300 leading-relaxed">
-                        <span className="text-cyan-400 font-bold">My Circle:</span> I choose individuals, mentors, friends, and close people based on <span className="text-yellow-400 font-semibold">trust</span>, <span className="text-emerald-400 font-semibold">honesty</span>, and a little bit of <span className="text-purple-400 font-semibold">stupidity and humor</span>. Most importantly, I <span className="text-gradient-6 font-bold">give respect</span> to others as individuals and fellow human beings, and expect to be <span className="text-gradient-6 font-bold">respected back</span>—because it's not a hard thing. Not necessarily need to be introvert, extrovert, or a bit of both.
-                    </p>
-                </motion.div>
+    {/* Values & Relationships Quote */ }
+    <motion.div
+        initial={{ y: 20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 0.78 }}
+        className="glass-panel px-6 py-4 rounded-2xl mb-6 max-w-3xl border border-cyan-500/20"
+    >
+        <p className="text-sm text-gray-300 leading-relaxed">
+            <span className="text-cyan-400 font-bold">My Circle:</span> I choose individuals, mentors, friends, and close people based on <span className="text-yellow-400 font-semibold">trust</span>, <span className="text-emerald-400 font-semibold">honesty</span>, and a little bit of <span className="text-purple-400 font-semibold">stupidity and humor</span>. Most importantly, I <span className="text-gradient-6 font-bold">give respect</span> to others as individuals and fellow human beings, and expect to be <span className="text-gradient-6 font-bold">respected back</span>—because it's not a hard thing. Not necessarily need to be introvert, extrovert, or a bit of both.
+        </p>
+    </motion.div>
 
-                {/* Contact Info */}
+    {/* Contact Info */ }
                 <motion.div
                     initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
@@ -211,16 +215,16 @@ export const HeroSection = () => {
                         LinkedIn
                     </a>
                 </motion.div>
-            </motion.div>
+            </motion.div >
 
-            {/* Scroll Indicator */}
-            <motion.div
-                className="absolute bottom-10"
-                animate={{ y: [0, 10, 0] }}
-                transition={{ duration: 2, repeat: Infinity }}
+    {/* Scroll Indicator */ }
+    < motion.div
+className = "absolute bottom-10"
+animate = {{ y: [0, 10, 0] }}
+transition = {{ duration: 2, repeat: Infinity }}
             >
-                <ArrowDown className="text-white/30" />
-            </motion.div>
-        </section>
+    <ArrowDown className="text-white/30" />
+            </motion.div >
+        </section >
     );
 };
