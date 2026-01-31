@@ -1,0 +1,286 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "tailwindcss";
+
+/* Scroll offset for fixed navbar */
+section {
+  scroll-margin-top: 100px;
+}
+
+@theme {
+  --color-bg-dark: #0a0a0a;
+  --color-fg-primary: #ffffff;
+  --color-fg-secondary: #94a3b8;
+
+  --color-accent-cyan: #06b6d4;
+  --color-accent-purple: #a855f7;
+  --color-accent-emerald: #10b981;
+
+  --animate-float: float 6s ease-in-out infinite;
+}
+
+/* Hide scrollbar utility */
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* ============= DARK MODE (Default) ============= */
+body {
+  background: #0a0a0a;
+  color: #ffffff;
+}
+
+/* Dark mode background */
+.dark-mode-bg {
+  background: radial-gradient(ellipse at top, #1a1b26, #000000, #000000);
+}
+
+/* ============= LIGHT MODE - Soft Professional Theme ============= */
+html.light {
+  /* Soft gray-lavender gradient - easy on eyes, matches dark mode aesthetic */
+  background: linear-gradient(135deg,
+      #e5e7eb 0%,
+      #d1d5db 25%,
+      #e0e7ff 50%,
+      #ddd6fe 75%,
+      #e5e7eb 100%);
+  background-size: 400% 400%;
+  animation: gradientShift 25s ease infinite;
+}
+
+html.light body {
+  background: transparent;
+  color: #e0e7ff;
+}
+
+/* Animated gradient background for light mode */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Light mode floating orbs - subtle and soft */
+html.light body::before {
+  content: '';
+  position: fixed;
+  top: -10%;
+  left: -10%;
+  width: 50%;
+  height: 50%;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.08) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: float 10s ease-in-out infinite;
+  z-index: -1;
+}
+
+html.light body::after {
+  content: '';
+  position: fixed;
+  bottom: -10%;
+  right: -10%;
+  width: 60%;
+  height: 60%;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.08) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: float 12s ease-in-out infinite reverse;
+  z-index: -1;
+}
+
+/* Hide dark background in light mode */
+html.light .dark-mode-bg {
+  display: none;
+}
+
+/* Light mode glass panels - soft white with subtle tint */
+html.light .glass-panel {
+  background: rgba(255, 255, 255, 0.75) !important;
+  border: 1px solid rgba(139, 92, 246, 0.2) !important;
+  box-shadow: 0 8px 32px 0 rgba(139, 92, 246, 0.15) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+}
+
+html.light .glass-dock {
+  background: rgba(255, 255, 255, 0.85) !important;
+  border: 1px solid rgba(139, 92, 246, 0.25) !important;
+  box-shadow: 0 8px 32px 0 rgba(139, 92, 246, 0.2) !important;
+}
+
+html.light .glass-btn {
+  background: rgba(255, 255, 255, 0.6) !important;
+  border: 1px solid rgba(139, 92, 246, 0.2) !important;
+}
+
+html.light .glass-btn:hover {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border-color: rgba(139, 92, 246, 0.4) !important;
+  box-shadow: 0 10px 30px rgba(139, 92, 246, 0.25) !important;
+}
+
+/* Light mode text colors - comfortable contrast */
+html.light .text-white,
+html.light h1,
+html.light h2,
+html.light h3,
+html.light h4,
+html.light h5 {
+  color: #1f2937 !important;
+  text-shadow: none;
+}
+
+html.light .text-gray-300 {
+  color: #4b5563 !important;
+}
+
+html.light .text-gray-400 {
+  color: #6b7280 !important;
+}
+
+html.light .text-gray-500 {
+  color: #9ca3af !important;
+}
+
+html.light .text-gray-600 {
+  color: #6b7280 !important;
+}
+
+/* Keep gradient text vibrant in light mode */
+html.light .text-gradient-6 {
+  background: linear-gradient(135deg,
+      rgb(6, 182, 212),
+      rgb(168, 85, 247),
+      rgb(251, 191, 36),
+      rgb(59, 130, 246),
+      rgb(168, 85, 247),
+      rgb(16, 185, 129));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Light mode accent colors - bright and vivid */
+html.light .text-cyan-400 {
+  color: #22d3ee !important;
+}
+
+html.light .text-purple-400 {
+  color: #c084fc !important;
+}
+
+html.light .text-emerald-400 {
+  color: #34d399 !important;
+}
+
+html.light .text-yellow-400 {
+  color: #fbbf24 !important;
+}
+
+html.light .text-orange-400 {
+  color: #fb923c !important;
+}
+
+html.light .text-pink-400 {
+  color: #f472b6 !important;
+}
+
+html.light .text-green-400 {
+  color: #4ade80 !important;
+}
+
+html.light .text-blue-400 {
+  color: #60a5fa !important;
+}
+
+/* Light mode borders - cyan glow */
+html.light .border-white\/10,
+html.light .border-white\/20 {
+  border-color: rgba(139, 233, 253, 0.25) !important;
+}
+
+html.light .border-cyan-500 {
+  border-color: rgba(6, 182, 212, 0.4) !important;
+}
+
+html.light .border-purple-500 {
+  border-color: rgba(168, 85, 247, 0.4) !important;
+}
+
+html.light .border-emerald-500 {
+  border-color: rgba(16, 185, 129, 0.4) !important;
+}
+
+/* ============= DARK MODE STYLES ============= */
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.glass-panel {
+  background: rgba(10, 10, 26, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-dock {
+  background: rgba(10, 10, 26, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.glass-btn {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.glass-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.text-gradient-6 {
+  background: linear-gradient(135deg,
+      rgb(6, 182, 212),
+      rgb(168, 85, 247),
+      rgb(251, 191, 36),
+      rgb(59, 130, 246),
+      rgb(168, 85, 247),
+      rgb(16, 185, 129));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
