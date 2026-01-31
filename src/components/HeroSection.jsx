@@ -76,21 +76,21 @@ export const HeroSection = () => {
                             transition={{ duration: 3, repeat: Infinity, delay: 1 }}
                         />
 
-                            <span className="text-sm font-bold text-gradient-6">Polymath • VLSI Engineer</span>
-                        </motion.div>
-                    </div>
-                    
-                    {/* Floating badge - MOVED OUTSIDE to prevent overlap issues */}
-                    <motion.div
-                        className="absolute -bottom-10 left-1/2 -translate-x-1/2 bg-black/80 backdrop-blur-md px-6 py-2 rounded-full border border-white/20 shadow-xl z-20 whitespace-nowrap"
-                        initial={{ y: 20, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        transition={{ delay: 0.6 }}
-                        whileHover={{ scale: 1.05 }}
-                    >
-                        {/* Light mode specific background via CSS override in index.css */}
                         <span className="text-sm font-bold text-gradient-6">Polymath • VLSI Engineer</span>
-                    </motion.div>
+                </motion.div>
+            </div>
+        </motion.div>
+
+                {/* Floating badge - MOVED OUTSIDE to prevent overlap issues - positioned relative to container */ }
+                <motion.div
+                    className="absolute -bottom-10 left-1/2 -translate-x-1/2 bg-black/80 backdrop-blur-md px-6 py-2 rounded-full border border-white/20 shadow-xl z-20 whitespace-nowrap"
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.6 }}
+                    whileHover={{ scale: 1.05 }}
+                >
+                    {/* Light mode specific background via CSS override in index.css */}
+                    <span className="text-sm font-bold text-gradient-6">Polymath • VLSI Engineer</span>
                 </motion.div>
 
                 <motion.h1
@@ -140,7 +140,7 @@ export const HeroSection = () => {
                     From underwater vision systems to neuromorphic circuits—building intelligent hardware at Digital University Kerala
                 </motion.p>
 
-                {/* Philosophy */ }
+    {/* Philosophy */ }
     <motion.div
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
