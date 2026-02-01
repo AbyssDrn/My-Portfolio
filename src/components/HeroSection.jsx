@@ -8,15 +8,15 @@ import cvPdf from '../../public/cv.pdf';
 import { useNotification } from '../context/NotificationContext';
 import { TimeGreeting } from './TimeGreeting';
 import { QuoteDisplay } from './QuoteDisplay';
+import { BlackHole } from './BlackHole';
 
 export const HeroSection = () => {
     const { showNotification } = useNotification();
 
     return (
         <section id="home" className="min-h-screen w-full flex flex-col items-center justify-center relative overflow-hidden pt-32 pb-20">
-            {/* Background Gradient Orbs */}
-            <div className="absolute top-20 left-20 w-96 h-96 bg-purple-600/20 rounded-full blur-[100px] animate-float" />
-            <div className="absolute bottom-20 right-20 w-96 h-96 bg-cyan-600/20 rounded-full blur-[100px] animate-float" style={{ animationDelay: '-2s' }} />
+            {/* Animated Black Hole Background */}
+            <BlackHole />
 
             {/* Time-based Multi-language Greeting */}
             <TimeGreeting />

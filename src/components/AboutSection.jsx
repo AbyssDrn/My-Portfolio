@@ -13,7 +13,7 @@ const TimelineItem = ({ year, title, institution, details, side = 'left', delay 
         {/* Timeline Dot */}
         <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 w-4 h-4 bg-cyan-500 rounded-full ring-4 ring-cyan-500/20" />
 
-        <div className="flex-1 glass-panel p-6 rounded-2xl border-l-4 border-l-cyan-500 hover:bg-white/5 transition-colors">
+        <div className="flex-1 glass-panel p-6 rounded-2xl hover:bg-white/5 transition-colors">
             <div className="flex items-center gap-2 text-cyan-400 text-sm font-bold mb-2">
                 <Calendar size={16} />
                 {year}
@@ -68,8 +68,7 @@ export const AboutSection = () => {
 
                 {/* Timeline */}
                 <div className="relative">
-                    {/* Vertical Line */}
-                    <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-cyan-500/50 via-purple-500/50 to-transparent" />
+                    {/* Vertical Line - Removed per user request */}
 
                     <TimelineItem
                         year="2025-Present"

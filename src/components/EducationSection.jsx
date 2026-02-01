@@ -21,7 +21,7 @@ export const EducationSection = () => {
                         initial={{ opacity: 0, x: -30 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: false }}
-                        className="glass-panel p-8 rounded-3xl border-l-4 border-l-cyan-500"
+                        className="glass-panel p-8 rounded-3xl"
                     >
                         <div className="flex items-center gap-3 mb-4">
                             <GraduationCap className="text-cyan-400" size={32} />
@@ -43,7 +43,7 @@ export const EducationSection = () => {
                         initial={{ opacity: 0, x: 30 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: false }}
-                        className="glass-panel p-8 rounded-3xl border-l-4 border-l-emerald-500"
+                        className="glass-panel p-8 rounded-3xl"
                     >
                         <div className="flex items-center gap-3 mb-4">
                             <GraduationCap className="text-emerald-400" size={32} />
