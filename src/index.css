@@ -37,6 +37,13 @@ body {
   color: #ffffff;
 }
 
+/* Light Mode - Sakura Pink Background (Slightly Darker/Richer) */
+html.light body {
+  background: linear-gradient(135deg, #FFD1DC 0%, #FFE4E1 25%, #FFC0CB 50%, #FFB7C5 75%, #FFD1DC 100%) !important;
+  background-attachment: fixed !important;
+  color: #1f2937;
+}
+
 /* Dark mode background */
 .dark-mode-bg {
   background: radial-gradient(ellipse at top, #1a1b26, #000000, #000000);
@@ -359,6 +366,61 @@ html.light .bg-white\/5 {
 
 html.light .border-white\/10 {
   border-color: rgba(100, 100, 100, 0.2) !important;
+}
+
+/* Fix text visibility in light mode */
+html.light .text-gray-300 {
+  color: #374151 !important;
+  /* Much darker gray for better contrast */
+}
+
+html.light .text-gray-400 {
+  color: #1f2937 !important;
+  /* Dark gray for readability */
+}
+
+html.light .text-gray-500 {
+  color: #111827 !important;
+  /* Very dark gray */
+}
+
+html.light .text-cyan-400 {
+  color: #0891b2 !important;
+  /* Darker cyan for light mode */
+}
+
+html.light .text-purple-400 {
+  color: #7c3aed !important;
+  /* Darker purple */
+}
+
+html.light .text-emerald-400 {
+  color: #059669 !important;
+  /* Darker emerald */
+}
+
+/* Light Mode Glass Panels - Whiter/More Distinct */
+html.light .glass-panel {
+  background-color: rgba(255, 255, 255, 0.4) !important;
+  /* Whiter background */
+  backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.6) !important;
+  /* Whiter border */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03) !important;
+}
+
+html.light .bg-white\/5 {
+  background-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+html.light .bg-white\/10 {
+  background-color: rgba(255, 255, 255, 0.4) !important;
+}
+
+/* Performance optimizations */
+.glass-panel {
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 /* ============= DARK MODE STYLES ============= */

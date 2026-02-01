@@ -69,7 +69,12 @@ export const FloatingDock = () => {
             </div>
 
             {/* Theme Toggle */}
-            <div className="flex items-center flex-shrink-0 pl-1 md:pl-2 border-l border-white/10 ml-1 md:ml-2 md:border-l-0">
+            <div className="flex items-center flex-shrink-0 pl-2 md:pl-3 ml-2 md:ml-3">
+                {/* Visible divider in both modes */}
+                <div
+                    className="h-6 w-px mr-2 md:mr-3"
+                    style={{ backgroundColor: isDark ? 'rgba(255, 255, 255, 0.4)' : '#000000' }}
+                />
                 <button
                     onClick={toggleTheme}
                     className="group relative flex flex-col items-center flex-shrink-0"

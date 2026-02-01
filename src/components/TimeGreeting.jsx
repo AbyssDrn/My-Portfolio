@@ -95,16 +95,16 @@ export const TimeGreeting = () => {
                         animate={{ opacity: 1, x: 0 }}
                         exit={{ opacity: 0, x: -50 }}
                         transition={{ duration: 0.5 }}
-                        className="fixed top-24 left-6 z-40 hidden md:block"
+                        className="fixed top-20 left-4 md:top-24 md:left-6 z-40"
                     >
-                        <div className="glass-panel p-4 rounded-xl border border-white/10 max-w-[200px]">
+                        <div className="glass-panel p-3 md:p-4 rounded-xl border border-white/10 max-w-[180px] md:max-w-[200px]">
                             <div className="flex items-center gap-2 mb-2 text-cyan-400">
-                                <Icon size={16} />
-                                <span className="text-xs font-bold uppercase tracking-wider">{phase} Greeting</span>
+                                <Icon size={14} className="md:w-4 md:h-4" />
+                                <span className="text-[10px] md:text-xs font-bold uppercase tracking-wider">{phase} Greeting</span>
                             </div>
-                            <p className="text-xs text-gray-400 mb-1">Language: <span className="text-white dark:text-white light:text-gray-900">{greeting.lang}</span></p>
-                            <p className="text-xs text-gray-400 mb-1">Pronounce: <span className="text-white/90 dark:text-white/90 light:text-gray-800 italic">{greeting.pronunciation}</span></p>
-                            <p className="text-xs text-gray-400">Meaning: <span className="text-white/90 dark:text-white/90 light:text-gray-800">{greeting.meaning}</span></p>
+                            <p className="text-[10px] md:text-xs text-gray-400 mb-1">Language: <span className="text-white dark:text-white light:text-gray-900">{greeting.lang}</span></p>
+                            <p className="text-[10px] md:text-xs text-gray-400 mb-1">Pronounce: <span className="text-white/90 dark:text-white/90 light:text-gray-800 italic">{greeting.pronunciation}</span></p>
+                            <p className="text-[10px] md:text-xs text-gray-400">Meaning: <span className="text-white/90 dark:text-white/90 light:text-gray-800">{greeting.meaning}</span></p>
                         </div>
                     </motion.div>
                 )}

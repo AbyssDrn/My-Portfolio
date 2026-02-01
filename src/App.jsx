@@ -67,7 +67,7 @@ function App() {
             onClick={scrollToTop}
             className="fixed bottom-8 right-8 p-4 rounded-full glass-panel hover:bg-white/10 transition-colors z-40 group cursor-pointer"
           >
-            <ArrowUp size={24} className="group-hover:-translate-y-1 transition-transform" />
+            <ArrowUp size={24} className="group-hover:-translate-y-1 transition-transform text-gray-800 dark:text-white" />
           </motion.button>
 
           {/* Dark Mode Extension Detector */}
