@@ -153,7 +153,7 @@ export const BlogSection = () => {
                                 <a
                                     href={resumePdf}
                                     download="Amal_Madhu_Resume.pdf"
-                                    onClick={() => showNotification("Resume Downloaded! 🚀")}
+                                    onClick={() => showNotification("Still Improving... it keeps on progressing as day passes... 🚀")}
                                     className="glass-btn px-6 py-3 rounded-full font-medium hover:scale-105 transition-transform cursor-pointer text-center"
                                 >
                                     Download Resume
@@ -161,7 +161,7 @@ export const BlogSection = () => {
                                 <a
                                     href={cvPdf}
                                     download="Amal_Madhu_CV.pdf"
-                                    onClick={() => showNotification("CV Downloaded! 🎉")}
+                                    onClick={() => showNotification("Still Improving... it keeps on progressing as day passes... 🎉")}
                                     className="glass-btn px-6 py-3 rounded-full font-medium hover:scale-105 transition-transform cursor-pointer text-center"
                                 >
                                     Download CV

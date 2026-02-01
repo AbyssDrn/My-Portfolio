@@ -6,6 +6,8 @@ import profileImg from '../../public/Amal.png';
 import resumePdf from '../../public/resume.pdf';
 import cvPdf from '../../public/cv.pdf';
 import { useNotification } from '../context/NotificationContext';
+import { TimeGreeting } from './TimeGreeting';
+import { QuoteDisplay } from './QuoteDisplay';
 
 export const HeroSection = () => {
     const { showNotification } = useNotification();
@@ -15,6 +17,9 @@ export const HeroSection = () => {
             {/* Background Gradient Orbs */}
             <div className="absolute top-20 left-20 w-96 h-96 bg-purple-600/20 rounded-full blur-[100px] animate-float" />
             <div className="absolute bottom-20 right-20 w-96 h-96 bg-cyan-600/20 rounded-full blur-[100px] animate-float" style={{ animationDelay: '-2s' }} />
+
+            {/* Time-based Multi-language Greeting */}
+            <TimeGreeting />
 
             <motion.div
                 initial={{ opacity: 0 }}
@@ -106,6 +111,9 @@ export const HeroSection = () => {
                     Amal <span className="text-gradient-6">Madhu</span>
                 </motion.h1>
 
+                {/* Random Inspirational Quote */}
+                <QuoteDisplay />
+
                 <motion.h2
                     initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
@@ -174,24 +182,11 @@ export const HeroSection = () => {
                     initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ delay: 0.78 }}
-                    className="glass-panel px-6 py-4 rounded-2xl mb-6 max-w-3xl border border-cyan-500/20"
+                    className="glass-panel px-6 py-4 rounded-2xl mb-10 max-w-3xl border border-cyan-500/20"
                 >
                     <p className="text-sm text-gray-300 leading-relaxed">
                         <span className="text-cyan-400 font-bold">My Circle:</span> I choose individuals, mentors, friends, and close people based on <span className="text-yellow-400 font-semibold">trust</span>, <span className="text-emerald-400 font-semibold">honesty</span>, and a little bit of <span className="text-purple-400 font-semibold">stupidity and humor</span>. Most importantly, I <span className="text-gradient-6 font-bold">give respect</span> to others as individuals and fellow human beings, and expect to be <span className="text-gradient-6 font-bold">respected back</span>—because it's not a hard thing. Not necessarily need to be introvert, extrovert, or a bit of both.
                     </p>
-                </motion.div>
-
-                {/* Contact Info */}
-                <motion.div
-                    initial={{ y: 20, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{ delay: 0.8 }}
-                    className="flex flex-wrap justify-center gap-4 text-sm text-gray-400 mb-10"
-                >
-                    <span>📍 Thiruvananthapuram, Kerala</span>
-                    <span>📧 amalmadhu04022001@gmail.com</span>
-                    <span>📱 +91-8921470483</span>
-                    <span>🎂 Age 24</span>
                 </motion.div>
 
                 <motion.div
@@ -203,7 +198,7 @@ export const HeroSection = () => {
                     <a
                         href={resumePdf}
                         download="Amal_Madhu_Resume.pdf"
-                        onClick={() => showNotification("Resume Downloaded! 🚀")}
+                        onClick={() => showNotification("Still Improving... it keeps on progressing as day passes... 🚀")}
                         className="glass-btn px-8 py-3 rounded-full flex items-center gap-2 text-white font-medium group"
                     >
                         <Download size={18} className="group-hover:-translate-y-1 transition-transform" />
@@ -212,7 +207,7 @@ export const HeroSection = () => {
                     <a
                         href={cvPdf}
                         download="Amal_Madhu_CV.pdf"
-                        onClick={() => showNotification("CV Downloaded! 🎉")}
+                        onClick={() => showNotification("Still Improving... it keeps on progressing as day passes... 🎉")}
                         className="glass-btn px-8 py-3 rounded-full flex items-center gap-2 text-white font-medium group"
                     >
                         <FileText size={18} className="group-hover:-translate-y-1 transition-transform" />
