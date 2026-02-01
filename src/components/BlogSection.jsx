@@ -1,8 +1,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Mail, MapPin, Phone, Github, Linkedin } from 'lucide-react';
+import resumePdf from '../../public/resume.pdf';
+import cvPdf from '../../public/cv.pdf';
+import { useNotification } from '../context/NotificationContext';
 
 export const BlogSection = () => {
+    const { showNotification } = useNotification();
+
+    // ... blogPosts array remains the same ...
     const blogPosts = [
         {
             date: "Jan 2026",
@@ -117,7 +123,7 @@ export const BlogSection = () => {
                                     </div>
                                     <div>
                                         <p className="text-sm text-gray-400">Location</p>
-                                        <p className="text-white">Kanayannur, Kerala</p>
+                                        <p className="text-white">Mangalapuram, Kerala</p>
                                         <p className="text-sm text-gray-500">Thiruvananthapuram Campus</p>
                                     </div>
                                 </div>
@@ -144,10 +150,20 @@ export const BlogSection = () => {
                                 "Open to part-time roles, collaborative projects, and exciting opportunities in VLSI, AI-hardware fusion, and embedded systems."
                             </p>
                             <div className="flex gap-4">
-                                <a href="/resume.pdf" download className="glass-btn px-6 py-3 rounded-full font-medium hover:scale-105 transition-transform">
+                                <a
+                                    href={resumePdf}
+                                    download="Amal_Madhu_Resume.pdf"
+                                    onClick={() => showNotification("Resume Downloaded! 🚀")}
+                                    className="glass-btn px-6 py-3 rounded-full font-medium hover:scale-105 transition-transform cursor-pointer text-center"
+                                >
                                     Download Resume
                                 </a>
-                                <a href="/cv.pdf" download className="glass-btn px-6 py-3 rounded-full font-medium hover:scale-105 transition-transform">
+                                <a
+                                    href={cvPdf}
+                                    download="Amal_Madhu_CV.pdf"
+                                    onClick={() => showNotification("CV Downloaded! 🎉")}
+                                    className="glass-btn px-6 py-3 rounded-full font-medium hover:scale-105 transition-transform cursor-pointer text-center"
+                                >
                                     Download CV
                                 </a>
                             </div>
@@ -161,5 +177,4 @@ export const BlogSection = () => {
                 </footer>
             </div>
         </section>
-    );
-};
+    );    

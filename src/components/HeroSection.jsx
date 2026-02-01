@@ -5,8 +5,11 @@ import { ArrowDown, Download, FileText, Github, Sparkles } from 'lucide-react';
 import profileImg from '../../public/Amal.png';
 import resumePdf from '../../public/resume.pdf';
 import cvPdf from '../../public/cv.pdf';
+import { useNotification } from '../context/NotificationContext';
 
 export const HeroSection = () => {
+    const { showNotification } = useNotification();
+
     return (
         <section id="home" className="min-h-screen w-full flex flex-col items-center justify-center relative overflow-hidden pt-32 pb-20">
             {/* Background Gradient Orbs */}
@@ -197,11 +200,21 @@ export const HeroSection = () => {
                     transition={{ delay: 0.9 }}
                     className="flex flex-wrap justify-center gap-4"
                 >
-                    <a href={resumePdf} download="Amal_Madhu_Resume.pdf" className="glass-btn px-8 py-3 rounded-full flex items-center gap-2 text-white font-medium group">
+                    <a
+                        href={resumePdf}
+                        download="Amal_Madhu_Resume.pdf"
+                        onClick={() => showNotification("Resume Downloaded! 🚀")}
+                        className="glass-btn px-8 py-3 rounded-full flex items-center gap-2 text-white font-medium group"
+                    >
                         <Download size={18} className="group-hover:-translate-y-1 transition-transform" />
                         Download Resume
                     </a>
-                    <a href={cvPdf} download="Amal_Madhu_CV.pdf" className="glass-btn px-8 py-3 rounded-full flex items-center gap-2 text-white font-medium group">
+                    <a
+                        href={cvPdf}
+                        download="Amal_Madhu_CV.pdf"
+                        onClick={() => showNotification("CV Downloaded! 🎉")}
+                        className="glass-btn px-8 py-3 rounded-full flex items-center gap-2 text-white font-medium group"
+                    >
                         <FileText size={18} className="group-hover:-translate-y-1 transition-transform" />
                         Download CV
                     </a>

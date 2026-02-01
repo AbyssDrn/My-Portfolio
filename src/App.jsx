@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, useScroll, useSpring } from 'framer-motion';
 import { ArrowUp } from 'lucide-react';
 import { ThemeProvider } from './context/ThemeContext';
+import { NotificationProvider } from './context/NotificationContext';
 import { DarkModeExtensionDetector } from './components/DarkModeExtensionDetector';
 import { FloatingDock } from './components/FloatingDock';
 import { HeroSection } from './components/HeroSection';
@@ -37,42 +38,44 @@ function App() {
 
   return (
     <ThemeProvider>
-      <div className="relative w-full min-h-screen text-white selection:bg-cyan-500/30 overflow-x-hidden">
-        {/* Scroll Progress Bar */}
-        <motion.div
-          className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-cyan-500 via-purple-500 to-emerald-500 origin-left z-50"
-          style={{ scaleX }}
-        />
+      <NotificationProvider>
+        <div className="relative w-full min-h-screen text-white selection:bg-cyan-500/30 overflow-x-hidden">
+          {/* Scroll Progress Bar */}
+          <motion.div
+            className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-cyan-500 via-purple-500 to-emerald-500 origin-left z-50"
+            style={{ scaleX }}
+          />
 
-        <FloatingDock />
+          <FloatingDock />
 
-        <main className="flex flex-col w-full">
-          <HeroSection />
-          <AboutSection />
-          <VisionSection />
-          <SkillsSection />
-          <ProjectsSection />
-          <EducationSection />
-          <InterestsSection />
-          <BlogSection />
-        </main>
+          <main className="flex flex-col w-full">
+            <HeroSection />
+            <AboutSection />
+            <VisionSection />
+            <SkillsSection />
+            <ProjectsSection />
+            <EducationSection />
+            <InterestsSection />
+            <BlogSection />
+          </main>
 
-        {/* Scroll to Top Button */}
-        <motion.button
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: showScrollTop ? 1 : 0, y: showScrollTop ? 0 : 50 }}
-          onClick={scrollToTop}
-          className="fixed bottom-8 right-8 p-4 rounded-full glass-panel hover:bg-white/10 transition-colors z-40 group cursor-pointer"
-        >
-          <ArrowUp size={24} className="group-hover:-translate-y-1 transition-transform" />
-        </motion.button>
+          {/* Scroll to Top Button */}
+          <motion.button
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: showScrollTop ? 1 : 0, y: showScrollTop ? 0 : 50 }}
+            onClick={scrollToTop}
+            className="fixed bottom-8 right-8 p-4 rounded-full glass-panel hover:bg-white/10 transition-colors z-40 group cursor-pointer"
+          >
+            <ArrowUp size={24} className="group-hover:-translate-y-1 transition-transform" />
+          </motion.button>
 
-        {/* Dark Mode Extension Detector */}
-        <DarkModeExtensionDetector />
+          {/* Dark Mode Extension Detector */}
+          <DarkModeExtensionDetector />
 
-        {/* Dynamic Background - only show in dark mode */}
-        <div className="fixed inset-0 pointer-events-none -z-10 dark-mode-bg" />
-      </div>
+          {/* Dynamic Background - only show in dark mode */}
+          <div className="fixed inset-0 pointer-events-none -z-10 dark-mode-bg" />
+        </div>
+      </NotificationProvider>
     </ThemeProvider>
   );
 }
