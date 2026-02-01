@@ -1,8 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowDown, Download, FileText, Github, Sparkles } from 'lucide-react';
-// Import image directly to ensure Vite handles the path correctly
+// Import assets directly
 import profileImg from '../../public/Amal.png';
+import resumePdf from '../../public/resume.pdf';
+import cvPdf from '../../public/cv.pdf';
 
 export const HeroSection = () => {
     return (
@@ -195,11 +197,11 @@ export const HeroSection = () => {
                     transition={{ delay: 0.9 }}
                     className="flex flex-wrap justify-center gap-4"
                 >
-                    <a href="/resume.pdf" download className="glass-btn px-8 py-3 rounded-full flex items-center gap-2 text-white font-medium group">
+                    <a href={resumePdf} download="Amal_Madhu_Resume.pdf" className="glass-btn px-8 py-3 rounded-full flex items-center gap-2 text-white font-medium group">
                         <Download size={18} className="group-hover:-translate-y-1 transition-transform" />
                         Download Resume
                     </a>
-                    <a href="/cv.pdf" download className="glass-btn px-8 py-3 rounded-full flex items-center gap-2 text-white font-medium group">
+                    <a href={cvPdf} download="Amal_Madhu_CV.pdf" className="glass-btn px-8 py-3 rounded-full flex items-center gap-2 text-white font-medium group">
                         <FileText size={18} className="group-hover:-translate-y-1 transition-transform" />
                         Download CV
                     </a>
