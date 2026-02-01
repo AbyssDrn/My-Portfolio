@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Sun, Moon, Sunrise, Sunset, CloudSun } from 'lucide-react';
+import { Sun, Moon, Sunrise, Sunset } from 'lucide-react';
 
 const GREETINGS = {
     dawn: [
@@ -18,90 +18,107 @@ const GREETINGS = {
         { lang: 'Korean', text: '점심 식사 하셨어요?', pronunciation: 'Jeom-sim sik-sa ha-syeo-sseo-yo?', meaning: 'Have you had lunch? (Common Greeting)' },
         { lang: 'Chinese', text: '下午好', pronunciation: 'Xià wǔ hǎo', meaning: 'Good Afternoon' }
     ],
-    dusk: [
-        { lang: 'Japanese', text: 'お疲れ様です', pronunciation: 'Otsukaresama desu', meaning: 'Thank you for your hard work' },
-        { lang: 'Korean', text: '수고하셨습니다', pronunciation: 'Su-go-ha-syeot-seum-ni-da', meaning: 'You worked hard (Evening greeting)' },
-        { lang: 'Chinese', text: '傍晚好', pronunciation: 'Bàng wǎn hǎo', meaning: 'Good Evening' }
-    ],
-    night: [
+    evening: [
         { lang: 'Japanese', text: 'こんばんは', pronunciation: 'Konbanwa', meaning: 'Good Evening' },
-        { lang: 'Korean', text: '좋은 저녁', pronunciation: 'Jo-eun jeo-nyeok', meaning: 'Good Evening' },
+        { lang: 'Korean', text: '좋은 저녁이에요', pronunciation: 'Jo-eun jeo-nyeok-i-e-yo', meaning: 'Good Evening' },
         { lang: 'Chinese', text: '晚上好', pronunciation: 'Wǎn shang hǎo', meaning: 'Good Evening' }
     ],
-    tonight: [ // Late night
-        { lang: 'Japanese', text: 'おやすみなさい', pronunciation: 'Oyasuminasai', meaning: 'Good Night' },
-        { lang: 'Korean', text: '안녕히 주무세요', pronunciation: 'An-nyeong-hi ju-mu-se-yo', meaning: 'Good Night (Sleep well)' },
+    night: [
+        { lang: 'Japanese', text: 'おやすみなさい', pronunciation: 'Oyasuminasai', meaning: 'Good Night / Sleep Well' },
+        { lang: 'Korean', text: '잘자요', pronunciation: 'Jal-ja-yo', meaning: 'Sleep Well (Informal)' },
         { lang: 'Chinese', text: '晚安', pronunciation: 'Wǎn ān', meaning: 'Good Night' }
     ]
 };
 
-const getTimePhase = () => {
-    const hour = new Date().getHours();
-    if (hour >= 5 && hour < 9) return 'dawn';
-    if (hour >= 9 && hour < 12) return 'morning';
-    if (hour >= 12 && hour < 17) return 'afternoon';
-    if (hour >= 17 && hour < 20) return 'dusk';
-    if (hour >= 20 && hour < 23) return 'night';
-    return 'tonight'; // 23 - 5
-};
-
 export const TimeGreeting = () => {
-    const [greeting, setGreeting] = useState(null);
+    const [greeting, setGreeting] = useState({ lang: '', text: '', pronunciation: '', meaning: '' });
     const [phase, setPhase] = useState('morning');
+    const [isInHomeSection, setIsInHomeSection] = useState(true);
 
     useEffect(() => {
-        const currentPhase = getTimePhase();
-        setPhase(currentPhase);
+        const updateGreeting = () => {
+            const hour = new Date().getHours();
+            let currentPhase;
 
-        // Pick a random language for the detected time phase
-        const options = GREETINGS[currentPhase];
-        const randomOption = options[Math.floor(Math.random() * options.length)];
-        setGreeting(randomOption);
+            if (hour >= 5 && hour < 8) currentPhase = 'dawn';
+            else if (hour >= 8 && hour < 12) currentPhase = 'morning';
+            else if (hour >= 12 && hour < 17) currentPhase = 'afternoon';
+            else if (hour >= 17 && hour < 21) currentPhase = 'evening';
+            else currentPhase = 'night';
+
+            setPhase(currentPhase);
+
+            const phaseGreetings = GREETINGS[currentPhase];
+            const randomGreeting = phaseGreetings[Math.floor(Math.random() * phaseGreetings.length)];
+            setGreeting(randomGreeting);
+        };
+
+        updateGreeting();
+        const interval = setInterval(updateGreeting, 60000); // Update every minute
+        return () => clearInterval(interval);
     }, []);
 
-    if (!greeting) return null;
+    useEffect(() => {
+        const handleScroll = () => {
+            const homeSection = document.getElementById('home');
+            if (homeSection) {
+                const rect = homeSection.getBoundingClientRect();
+                const viewportCenter = window.innerHeight / 2;
+                const isVisible = rect.top < viewportCenter && rect.bottom > viewportCenter;
+                setIsInHomeSection(isVisible);
+            }
+        };
 
-    const Icon = {
-        dawn: Sunrise,
-        morning: Sun,
-        afternoon: CloudSun,
-        dusk: Sunset,
-        night: Moon,
-        tonight: Moon
-    }[phase] || Sun;
+        window.addEventListener('scroll', handleScroll);
+        handleScroll();
+
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    const getIcon = () => {
+        if (phase === 'dawn') return Sunrise;
+        if (phase === 'morning') return Sun;
+        if (phase === 'afternoon') return Sun;
+        if (phase === 'evening') return Sunset;
+        return Moon;
+    };
+
+    const Icon = getIcon();
 
     return (
         <>
-            {/* Top Left Prompt (As requested) */}
-            <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 1 }}
-                className="fixed top-24 left-6 z-40 hidden md:block"
-            >
-                <div className="glass-panel p-4 rounded-xl border border-white/10 max-w-[200px]">
-                    <div className="flex items-center gap-2 mb-2 text-cyan-400">
-                        <Icon size={16} />
-                        <span className="text-xs font-bold uppercase tracking-wider">{phase} Greeting</span>
-                    </div>
-                    <p className="text-xs text-gray-400 mb-1">Language: <span className="text-white dark:text-white light:text-gray-900">{greeting.lang}</span></p>
-                    <p className="text-xs text-gray-400 mb-1">Pronounce: <span className="text-white/90 dark:text-white/90 light:text-gray-800 italic">{greeting.pronunciation}</span></p>
-                    <p className="text-xs text-gray-400">Meaning: <span className="text-white/90 dark:text-white/90 light:text-gray-800">{greeting.meaning}</span></p>
-                </div>
-            </motion.div>
+            {/* Top Left Prompt - Only visible in home section */}
+            <AnimatePresence>
+                {isInHomeSection && (
+                    <motion.div
+                        initial={{ opacity: 0, x: -50 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: -50 }}
+                        transition={{ duration: 0.5 }}
+                        className="fixed top-24 left-6 z-40 hidden md:block"
+                    >
+                        <div className="glass-panel p-4 rounded-xl border border-white/10 max-w-[200px]">
+                            <div className="flex items-center gap-2 mb-2 text-cyan-400">
+                                <Icon size={16} />
+                                <span className="text-xs font-bold uppercase tracking-wider">{phase} Greeting</span>
+                            </div>
+                            <p className="text-xs text-gray-400 mb-1">Language: <span className="text-white dark:text-white light:text-gray-900">{greeting.lang}</span></p>
+                            <p className="text-xs text-gray-400 mb-1">Pronounce: <span className="text-white/90 dark:text-white/90 light:text-gray-800 italic">{greeting.pronunciation}</span></p>
+                            <p className="text-xs text-gray-400">Meaning: <span className="text-white/90 dark:text-white/90 light:text-gray-800">{greeting.meaning}</span></p>
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
 
-            {/* Main Greeting Display (Centered/Integrated) */}
+            {/* Main Greeting Text */}
             <motion.div
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="mb-6 flex flex-col items-center"
+                key={greeting.text}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8 }}
+                className="text-4xl md:text-6xl font-bold mb-4 text-gradient-6"
             >
-                <div className="text-6xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-400 via-white to-red-400 mb-2 font-serif tracking-widest">
-                    {greeting.text}
-                </div>
-                <div className="text-sm text-gray-500 font-mono tracking-widest uppercase opacity-70">
-                    {greeting.pronunciation}
-                </div>
+                {greeting.text}
             </motion.div>
         </>
     );

@@ -68,7 +68,23 @@ export const AboutSection = () => {
 
                 {/* Timeline */}
                 <div className="relative">
-                    {/* Vertical Line - Removed per user request */}
+                    {/* Creative Curved Connector */}
+                    <svg className="hidden md:block absolute left-1/2 top-0 bottom-0 w-1 -translate-x-1/2" style={{ height: '100%' }}>
+                        <defs>
+                            <linearGradient id="timeline-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" style={{ stopColor: 'rgb(6, 182, 212)', stopOpacity: 0.6 }} />
+                                <stop offset="50%" style={{ stopColor: 'rgb(168, 85, 247)', stopOpacity: 0.6 }} />
+                                <stop offset="100%" style={{ stopColor: 'rgb(16, 185, 129)', stopOpacity: 0.3 }} />
+                            </linearGradient>
+                        </defs>
+                        <path
+                            d="M 2 0 Q 2 50, 2 100 T 2 200 T 2 300 T 2 400 T 2 500 T 2 600 L 2 100%"
+                            stroke="url(#timeline-gradient)"
+                            strokeWidth="2"
+                            fill="none"
+                            strokeDasharray="8 4"
+                        />
+                    </svg>
 
                     <TimelineItem
                         year="2025-Present"

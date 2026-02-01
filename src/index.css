@@ -352,6 +352,11 @@ html.light .light\:text-gray-800 {
   color: #1f2937 !important;
 }
 
+/* Quote box border fix for light mode */
+html.light .glass-panel {
+  border-color: rgba(255, 255, 255, 0) !important;
+}
+
 /* ============= DARK MODE STYLES ============= */
 @keyframes float {
 

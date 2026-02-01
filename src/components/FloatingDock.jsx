@@ -69,8 +69,7 @@ export const FloatingDock = () => {
             </div>
 
             {/* Theme Toggle */}
-            <div className="flex items-center flex-shrink-0 pl-1 md:pl-0 border-l border-white/10 ml-1 md:ml-0 md:border-l-0">
-                <div className="hidden md:block h-6 w-px bg-white/10 mx-1" />
+            <div className="flex items-center flex-shrink-0 pl-1 md:pl-2 border-l border-white/10 ml-1 md:ml-2 md:border-l-0">
                 <button
                     onClick={toggleTheme}
                     className="group relative flex flex-col items-center flex-shrink-0"
