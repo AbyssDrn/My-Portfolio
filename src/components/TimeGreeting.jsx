@@ -84,9 +84,9 @@ export const TimeGreeting = () => {
                         <Icon size={16} />
                         <span className="text-xs font-bold uppercase tracking-wider">{phase} Greeting</span>
                     </div>
-                    <p className="text-xs text-gray-400 mb-1">Language: <span className="text-white">{greeting.lang}</span></p>
-                    <p className="text-xs text-gray-400 mb-1">Pronounce: <span className="text-white/90 italic">{greeting.pronunciation}</span></p>
-                    <p className="text-xs text-gray-400">Meaning: <span className="text-white/90">{greeting.meaning}</span></p>
+                    <p className="text-xs text-gray-400 mb-1">Language: <span className="text-white dark:text-white light:text-gray-900">{greeting.lang}</span></p>
+                    <p className="text-xs text-gray-400 mb-1">Pronounce: <span className="text-white/90 dark:text-white/90 light:text-gray-800 italic">{greeting.pronunciation}</span></p>
+                    <p className="text-xs text-gray-400">Meaning: <span className="text-white/90 dark:text-white/90 light:text-gray-800">{greeting.meaning}</span></p>
                 </div>
             </motion.div>
 

@@ -343,6 +343,15 @@ html.light .border-emerald-500 {
   border-color: rgba(16, 185, 129, 0.4) !important;
 }
 
+/* Light mode greeting tooltip text visibility */
+html.light .light\:text-gray-900 {
+  color: #111827 !important;
+}
+
+html.light .light\:text-gray-800 {
+  color: #1f2937 !important;
+}
+
 /* ============= DARK MODE STYLES ============= */
 @keyframes float {
 

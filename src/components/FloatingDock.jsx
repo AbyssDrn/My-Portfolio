@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
 import { Home, User, Eye, Brain, FolderGit2, GraduationCap, Heart, BookOpen, Mail, Sun, Moon } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 
@@ -17,15 +16,17 @@ const navItems = [
 
 export const FloatingDock = () => {
     const { isDark, toggleTheme } = useTheme();
-    const [showTooltips, setShowTooltips] = useState(true);
+    const [isInHomeSection, setIsInHomeSection] = useState(true);
 
     useEffect(() => {
         const handleScroll = () => {
             const homeSection = document.getElementById('home');
             if (homeSection) {
                 const rect = homeSection.getBoundingClientRect();
-                const isInHomeSection = rect.top < window.innerHeight && rect.bottom > 0;
-                setShowTooltips(isInHomeSection);
+                // Check if viewport center is within home section
+                const viewportCenter = window.innerHeight / 2;
+                const isVisible = rect.top < viewportCenter && rect.bottom > viewportCenter;
+                setIsInHomeSection(isVisible);
             }
         };
 
@@ -43,10 +44,7 @@ export const FloatingDock = () => {
     };
 
     return (
-        <motion.div
-            initial={{ y: -100, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+        <div
             className="fixed top-4 md:top-6 left-1/2 transform -translate-x-1/2 glass-dock rounded-full px-3 md:px-4 py-2 md:py-3 flex items-center justify-between md:justify-center gap-1 md:gap-3 z-50 w-[95vw] md:w-auto max-w-fit overflow-x-auto hide-scrollbar touch-pan-x"
         >
             <div className="flex items-center gap-1 md:gap-3">
@@ -60,25 +58,19 @@ export const FloatingDock = () => {
                             <item.icon size={16} className="md:w-[18px] md:h-[18px]" />
                         </div>
 
-                        {/* Tooltip - Only visible in home section */}
-                        <motion.span
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: showTooltips ? 0 : 0 }}
-                            className="hidden md:block absolute -bottom-8 group-hover:opacity-100 transition-opacity text-xs font-mono bg-black/80 px-2 py-1 rounded text-white whitespace-nowrap pointer-events-none"
-                            style={{
-                                opacity: showTooltips ? undefined : 0,
-                                pointerEvents: 'none'
-                            }}
-                        >
-                            {item.label}
-                        </motion.span>
+                        {/* Tooltip - Only rendered when in home section */}
+                        {isInHomeSection && (
+                            <span className="hidden md:block absolute -bottom-8 opacity-0 group-hover:opacity-100 transition-opacity text-xs font-mono bg-black/80 px-2 py-1 rounded text-white whitespace-nowrap pointer-events-none">
+                                {item.label}
+                            </span>
+                        )}
                     </button>
                 ))}
             </div>
 
-            {/* Theme Toggle Section - Fixed to right on mobile if possible, or just part of flow */}
+            {/* Theme Toggle */}
             <div className="flex items-center flex-shrink-0 pl-1 md:pl-0 border-l border-white/10 ml-1 md:ml-0 md:border-l-0">
-                <div className="hidden md:block h-6 w-px bg-white/10 mx-1" /> {/* Desktop Divider */}
+                <div className="hidden md:block h-6 w-px bg-white/10 mx-1" />
                 <button
                     onClick={toggleTheme}
                     className="group relative flex flex-col items-center flex-shrink-0"
@@ -88,19 +80,14 @@ export const FloatingDock = () => {
                         {isDark ? <Sun size={16} className="md:w-[18px] md:h-[18px]" /> : <Moon size={16} className="md:w-[18px] md:h-[18px]" />}
                     </div>
 
-                    <motion.span
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: showTooltips ? 0 : 0 }}
-                        className="hidden md:block absolute -bottom-8 group-hover:opacity-100 transition-opacity text-xs font-mono bg-black/80 px-2 py-1 rounded text-white whitespace-nowrap pointer-events-none"
-                        style={{
-                            opacity: showTooltips ? undefined : 0,
-                            pointerEvents: 'none'
-                        }}
-                    >
-                        {isDark ? 'Light' : 'Dark'}
-                    </motion.span>
+                    {/* Tooltip - Only rendered when in home section */}
+                    {isInHomeSection && (
+                        <span className="hidden md:block absolute -bottom-8 opacity-0 group-hover:opacity-100 transition-opacity text-xs font-mono bg-black/80 px-2 py-1 rounded text-white whitespace-nowrap pointer-events-none">
+                            {isDark ? 'Light' : 'Dark'}
+                        </span>
+                    )}
                 </button>
             </div>
-        </motion.div>
+        </div>
     );
 };
