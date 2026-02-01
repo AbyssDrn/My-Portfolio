@@ -37,9 +37,18 @@ body {
   color: #ffffff;
 }
 
-/* Light Mode - Sakura Pink Background (Slightly Darker/Richer) */
+/* Light Mode - Modern Sakura Mesh Gradient */
 html.light body {
-  background: linear-gradient(135deg, #FFD1DC 0%, #FFE4E1 25%, #FFC0CB 50%, #FFB7C5 75%, #FFD1DC 100%) !important;
+  background-color: #fff0f5;
+  /* Fallback: Lavender Blush */
+  background-image:
+    radial-gradient(at 0% 0%, hsla(340, 100%, 88%, 1) 0px, transparent 50%),
+    radial-gradient(at 50% 0%, hsla(350, 100%, 90%, 1) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, hsla(330, 100%, 85%, 1) 0px, transparent 50%),
+    radial-gradient(at 0% 50%, hsla(345, 100%, 93%, 1) 0px, transparent 50%),
+    radial-gradient(at 100% 50%, hsla(325, 100%, 88%, 1) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, hsla(355, 100%, 91%, 1) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, hsla(335, 100%, 86%, 1) 0px, transparent 50%) !important;
   background-attachment: fixed !important;
   color: #1f2937;
 }
