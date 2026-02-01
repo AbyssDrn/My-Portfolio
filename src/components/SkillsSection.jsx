@@ -31,43 +31,43 @@ export const SkillsSection = () => {
         {
             icon: Cpu,
             title: "Hardware/EDA",
-            level: "Advanced",
+            level: "Cooking 🍳", // Learning phase
             skills: ["Verilog/SystemVerilog", "Cadence", "Synopsys", "Mixed-Signal VLSI", "Neuromorphic Circuits", "Analog/Digital Workflows"],
             color: "bg-blue-500/20 text-blue-400"
         },
         {
             icon: Brain,
             title: "Programming/ML",
-            level: "Intermediate",
-            skills: ["Python", "AI/ML Basics", "PyTorch", "Algorithms", "Linux/Bash", "C/C++"],
+            level: "Enhancing ⚡",
+            skills: ["Python", "AI/ML Basics", "PyTorch", "Algorithms", "Data Visualization (Pie/Bar)", "Data Analysis"],
             color: "bg-purple-500/20 text-purple-400"
         },
         {
             icon: Code,
             title: "Development Tools",
-            level: "Advanced",
-            skills: ["VSCode", "LaTeX/Markdown", "Git/GitHub", "MS Office", "VMware/VMs"],
+            level: "Sharpening ⚔️",
+            skills: ["VSCode", "LaTeX/Markdown", "Git/GitHub", "GUI Design", "VMware/VMs"],
             color: "bg-emerald-500/20 text-emerald-400"
         },
         {
             icon: Globe,
             title: "Web/UI",
-            level: "Intermediate",
+            level: "Crafting 🎨",
             skills: ["HTML/CSS/JS", "React/Node", "Figma", "Blender", "Godot", "Krita"],
             color: "bg-cyan-500/20 text-cyan-400"
         },
         {
             icon: Zap,
             title: "Soft Skills",
-            level: "Advanced",
-            skills: ["Analysis", "Brainstorming", "Project Management", "Hackathon Strategy", "Problem Solving"],
+            level: "Cultivating 🌱",
+            skills: ["Foreign Languages (Learning)", "Emotional Intelligence", "Project Management", "Problem Solving", "Ethical Leadership"],
             color: "bg-yellow-500/20 text-yellow-400"
         },
         {
             icon: Database,
             title: "Current Learning",
-            level: "Learning",
-            skills: ["Quantum Physics Apps", "GPU/CUDA", "Full-Stack Web", "Edge Deployment", "UI/UX Design"],
+            level: "Exploring 🔭",
+            skills: ["Quantum Physics Apps", "GPU/CUDA", "Full-Stack Web", "Edge Deployment", "Accessibility Design"],
             color: "bg-pink-500/20 text-pink-400"
         }
     ];
@@ -88,12 +88,36 @@ export const SkillsSection = () => {
                     ))}
                 </div>
 
+                {/* Ethos & Values Box (Start of User Request Integration) */}
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: false }}
+                    className="mt-12 mb-6 glass-panel p-8 rounded-3xl border border-yellow-500/20"
+                >
+                    <h3 className="text-2xl font-bold mb-6 flex items-center gap-2">
+                        <Zap className="text-yellow-400" />
+                        Ethos, Mind & Society
+                    </h3>
+                    <div className="space-y-6 text-gray-300">
+                        <p className="leading-relaxed">
+                            <span className="text-cyan-400 font-bold">Social Responsibility:</span> I actively volunteer for the wellness of the <span className="text-white font-semibold">differently-abled</span>. Status, pride, and dignity are part of life, but we must never be over-reliant on them. I believe in treating everything as <span className="text-yellow-400 font-semibold">One & Equal</span>.
+                        </p>
+                        <p className="leading-relaxed">
+                            <span className="text-purple-400 font-bold">Mind & Body Mastery:</span> The greatest cure to any ailment is the <span className="text-white font-semibold">Will</span>. I practice building absolute control over thoughts, feelings, and emotions—channeling them to achieve goals rather than being controlled by them.
+                        </p>
+                        <p className="leading-relaxed">
+                            <span className="text-emerald-400 font-bold">Consistent Evolution:</span> Technology never stops, and neither do I. "Advanced" is a stagnant label; I am forever <span className="text-white font-semibold">Cooking, Learning, and Enhancing</span>. My hobby is learning the languages of the countries I admire, not just to speak, but to reach a deeper level of connection.
+                        </p>
+                    </div>
+                </motion.div>
+
                 {/* Certifications Box */}
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: false }}
-                    className="mt-12 glass-panel p-8 rounded-3xl border border-purple-500/20"
+                    className="mt-6 glass-panel p-8 rounded-3xl border border-purple-500/20"
                 >
                     <h3 className="text-2xl font-bold mb-6 flex items-center gap-2">
                         <Terminal className="text-purple-400" />
