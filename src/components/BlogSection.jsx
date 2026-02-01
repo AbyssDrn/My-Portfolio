@@ -92,80 +92,50 @@ export const BlogSection = () => {
                             className="glass-panel p-8 rounded-3xl"
                         >
                             <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
-                            <motion.div
-                                className="flex items-center gap-4 group/contact"
-                                whileHover={{ x: 10 }}
-                            >
-                                <motion.div
-                                    whileHover={{ rotate: 15, scale: 1.1 }}
-                                    className="w-12 h-12 rounded-xl bg-cyan-500/20 flex items-center justify-center group-hover/contact:bg-cyan-500/30 transition-all duration-300"
-                                >
-                                    <Mail size={20} className="text-cyan-400 group-hover/contact:scale-110 transition-transform" />
-                                </motion.div>
-                                <div>
-                                    <p className="text-xs text-gray-500 font-mono uppercase tracking-widest text-gray-400">Email</p>
-                                    <a href="mailto:amalmadhu04022001@gmail.com" className="text-white hover:text-cyan-400 transition-colors font-medium">
-                                        amalmadhu04022001@gmail.com
+                            <div className="space-y-4">
+                                <div className="flex items-center gap-3">
+                                    <div className="w-10 h-10 rounded-full bg-cyan-500/20 flex items-center justify-center">
+                                        <Mail size={18} className="text-cyan-400" />
+                                    </div>
+                                    <div>
+                                        <p className="text-sm text-gray-400">Email</p>
+                                        <a href="mailto:amalmadhu04022001@gmail.com" className="text-white hover:text-cyan-400 transition-colors">
+                                            amalmadhu04022001@gmail.com
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div className="flex items-center gap-3">
+                                    <div className="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center">
+                                        <Phone size={18} className="text-purple-400" />
+                                    </div>
+                                    <div>
+                                        <p className="text-sm text-gray-400">Phone</p>
+                                        <a href="tel:+918921470483" className="text-white hover:text-purple-400 transition-colors">
+                                            +91-8921470483
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div className="flex items-center gap-3">
+                                    <div className="w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center">
+                                        <MapPin size={18} className="text-emerald-400" />
+                                    </div>
+                                    <div>
+                                        <p className="text-sm text-gray-400">Location</p>
+                                        <p className="text-white">Mangalapuram, Kerala</p>
+                                        <p className="text-sm text-gray-500">Thiruvananthapuram Campus</p>
+                                    </div>
+                                </div>
+
+                                <div className="flex gap-4 mt-6">
+                                    <a href="https://github.com/AbyssDrn" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full glass-btn flex items-center justify-center hover:scale-110 transition-transform">
+                                        <Github size={20} />
+                                    </a>
+                                    <a href="https://www.linkedin.com/in/amal-madhu-48042a20a" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full glass-btn flex items-center justify-center hover:scale-110 transition-transform">
+                                        <Linkedin size={20} />
                                     </a>
                                 </div>
-                            </motion.div>
-
-                            <motion.div
-                                className="flex items-center gap-4 group/contact"
-                                whileHover={{ x: 10 }}
-                            >
-                                <motion.div
-                                    whileHover={{ rotate: -15, scale: 1.1 }}
-                                    className="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center group-hover/contact:bg-purple-500/30 transition-all duration-300"
-                                >
-                                    <Phone size={20} className="text-purple-400 group-hover/contact:scale-110 transition-transform" />
-                                </motion.div>
-                                <div>
-                                    <p className="text-xs text-gray-500 font-mono uppercase tracking-widest text-gray-400">Phone</p>
-                                    <a href="tel:+918921470483" className="text-white hover:text-purple-400 transition-colors font-medium">
-                                        +91-8921470483
-                                    </a>
-                                </div>
-                            </motion.div>
-
-                            <motion.div
-                                className="flex items-center gap-4 group/contact"
-                                whileHover={{ x: 10 }}
-                            >
-                                <motion.div
-                                    whileHover={{ rotate: 15, scale: 1.1 }}
-                                    className="w-12 h-12 rounded-xl bg-emerald-500/20 flex items-center justify-center group-hover/contact:bg-emerald-500/30 transition-all duration-300"
-                                >
-                                    <MapPin size={20} className="text-emerald-400 group-hover/contact:scale-110 transition-transform" />
-                                </motion.div>
-                                <div>
-                                    <p className="text-xs text-gray-500 font-mono uppercase tracking-widest text-gray-400">Location</p>
-                                    <p className="text-white font-medium">Mangalapuram, Kerala</p>
-                                    <p className="text-xs text-gray-500">Thiruvananthapuram Campus</p>
-                                </div>
-                            </motion.div>
-
-                            <div className="flex gap-4 mt-8">
-                                <motion.a
-                                    href="https://github.com/AbyssDrn"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    whileHover={{ y: -5, scale: 1.1, rotate: 10 }}
-                                    whileTap={{ scale: 0.9 }}
-                                    className="w-14 h-14 rounded-2xl glass-btn flex items-center justify-center hover:bg-white/10 transition-colors shadow-lg"
-                                >
-                                    <Github size={24} />
-                                </motion.a>
-                                <motion.a
-                                    href="https://www.linkedin.com/in/amal-madhu-48042a20a"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    whileHover={{ y: -5, scale: 1.1, rotate: -10 }}
-                                    whileTap={{ scale: 0.9 }}
-                                    className="w-14 h-14 rounded-2xl glass-btn flex items-center justify-center hover:bg-white/10 transition-colors shadow-lg"
-                                >
-                                    <Linkedin size={24} />
-                                </motion.a>
                             </div>
                         </motion.div>
 
@@ -183,7 +153,7 @@ export const BlogSection = () => {
                                 <a
                                     href={resumePdf}
                                     download="Amal_Madhu_Resume.pdf"
-                                    onClick={() => showNotification("Resume incoming! 🚀 Warning: May contain traces of excessive ambition.")}
+                                    onClick={() => showNotification("Still Improving... it keeps on progressing as day passes... 🚀")}
                                     className="glass-btn px-6 py-3 rounded-full font-medium hover:scale-105 transition-transform cursor-pointer text-center"
                                 >
                                     Download Resume
@@ -191,7 +161,7 @@ export const BlogSection = () => {
                                 <a
                                     href={cvPdf}
                                     download="Amal_Madhu_CV.pdf"
-                                    onClick={() => showNotification("CV acquired! 🎉 Future-proofing your team in 3... 2... 1...")}
+                                    onClick={() => showNotification("Still Improving... it keeps on progressing as day passes... 🎉")}
                                     className="glass-btn px-6 py-3 rounded-full font-medium hover:scale-105 transition-transform cursor-pointer text-center"
                                 >
                                     Download CV

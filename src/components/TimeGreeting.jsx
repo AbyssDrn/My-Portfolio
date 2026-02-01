@@ -48,7 +48,6 @@ const getTimePhase = () => {
 export const TimeGreeting = () => {
     const [greeting, setGreeting] = useState(null);
     const [phase, setPhase] = useState('morning');
-    const [isVisible, setIsVisible] = useState(true);
 
     useEffect(() => {
         const currentPhase = getTimePhase();
@@ -58,19 +57,6 @@ export const TimeGreeting = () => {
         const options = GREETINGS[currentPhase];
         const randomOption = options[Math.floor(Math.random() * options.length)];
         setGreeting(randomOption);
-
-        // Scroll listener for tooltip visibility
-        const handleScroll = () => {
-            const heroSection = document.getElementById('home');
-            if (heroSection) {
-                const rect = heroSection.getBoundingClientRect();
-                // Visible if hero bottom is still somewhat in view (e.g. > 100px)
-                setIsVisible(rect.bottom > 100);
-            }
-        };
-
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
     if (!greeting) return null;
@@ -86,28 +72,23 @@ export const TimeGreeting = () => {
 
     return (
         <>
-            {/* Top Left Prompt (As requested) - Logic to hide on scroll */}
-            <AnimatePresence>
-                {isVisible && (
-                    <motion.div
-                        initial={{ opacity: 0, x: -50 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: -50 }}
-                        transition={{ duration: 0.5 }}
-                        className="fixed top-24 left-6 z-40 hidden md:block"
-                    >
-                        <div className="glass-panel p-4 rounded-xl border border-black/10 dark:border-white/10 max-w-[200px] bg-white/80 dark:bg-black/30 backdrop-blur-md shadow-lg">
-                            <div className="flex items-center gap-2 mb-2 text-cyan-600 dark:text-cyan-400">
-                                <Icon size={16} />
-                                <span className="text-xs font-bold uppercase tracking-wider">{phase} Greeting</span>
-                            </div>
-                            <p className="text-xs text-gray-600 dark:text-gray-400 mb-1">Language: <span className="text-gray-900 dark:text-white font-semibold">{greeting.lang}</span></p>
-                            <p className="text-xs text-gray-600 dark:text-gray-400 mb-1">Pronounce: <span className="text-gray-800 dark:text-white/90 italic">{greeting.pronunciation}</span></p>
-                            <p className="text-xs text-gray-600 dark:text-gray-400">Meaning: <span className="text-gray-800 dark:text-white/90">{greeting.meaning}</span></p>
-                        </div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
+            {/* Top Left Prompt (As requested) */}
+            <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 1 }}
+                className="fixed top-24 left-6 z-40 hidden md:block"
+            >
+                <div className="glass-panel p-4 rounded-xl border border-white/10 max-w-[200px]">
+                    <div className="flex items-center gap-2 mb-2 text-cyan-400">
+                        <Icon size={16} />
+                        <span className="text-xs font-bold uppercase tracking-wider">{phase} Greeting</span>
+                    </div>
+                    <p className="text-xs text-gray-400 mb-1">Language: <span className="text-white">{greeting.lang}</span></p>
+                    <p className="text-xs text-gray-400 mb-1">Pronounce: <span className="text-white/90 italic">{greeting.pronunciation}</span></p>
+                    <p className="text-xs text-gray-400">Meaning: <span className="text-white/90">{greeting.meaning}</span></p>
+                </div>
+            </motion.div>
 
             {/* Main Greeting Display (Centered/Integrated) */}
             <motion.div
@@ -115,10 +96,10 @@ export const TimeGreeting = () => {
                 animate={{ opacity: 1, y: 0 }}
                 className="mb-6 flex flex-col items-center"
             >
-                <div className="text-6xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-gray-800 to-red-500 dark:from-red-400 dark:via-white dark:to-red-400 mb-2 font-serif tracking-widest drop-shadow-sm">
+                <div className="text-6xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-400 via-white to-red-400 mb-2 font-serif tracking-widest">
                     {greeting.text}
                 </div>
-                <div className="text-sm text-gray-600 dark:text-gray-500 font-mono tracking-widest uppercase opacity-80 dark:opacity-70 font-semibold">
+                <div className="text-sm text-gray-500 font-mono tracking-widest uppercase opacity-70">
                     {greeting.pronunciation}
                 </div>
             </motion.div>

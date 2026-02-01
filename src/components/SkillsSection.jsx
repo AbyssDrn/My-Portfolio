@@ -4,52 +4,23 @@ import { Cpu, Brain, Code, Wrench, Globe, Zap, Database, Terminal } from 'lucide
 
 const SkillCard = ({ icon: Icon, title, skills, color, level }) => (
     <motion.div
-        whileHover={{ scale: 1.05, rotateY: 5, z: 50 }}
+        whileHover={{ scale: 1.05, rotateY: 5 }}
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: false, margin: "-100px" }}
-        transition={{ duration: 0.5, type: "spring", stiffness: 300 }}
-        className="glass-panel p-6 rounded-2xl h-full border border-white/5 flex flex-col items-start min-h-[240px] cursor-pointer group perspective-1000"
+        transition={{ duration: 0.5 }}
+        className="glass-panel p-6 rounded-2xl h-full border border-white/5 flex flex-col items-start min-h-[240px] cursor-pointer group"
     >
-        <div className={`p-3 rounded-xl mb-4 ${color} relative overflow-hidden`}>
-            {/* Animated background glow for the icon */}
-            <motion.div
-                className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20"
-                animate={{
-                    scale: [1, 1.5, 1],
-                    rotate: [0, 90, 0]
-                }}
-                transition={{ duration: 3, repeat: Infinity }}
-            />
-            <Icon
-                size={32}
-                className="text-white relative z-10"
-                {...{
-                    // Adding dynamic animation properties to the icon itself
-                    as: motion.svg,
-                    animate: {
-                        rotate: [0, -10, 10, 0],
-                        scale: [1, 1.1, 1]
-                    },
-                    transition: {
-                        duration: 5,
-                        repeat: Infinity,
-                        ease: "easeInOut"
-                    }
-                }}
-            />
+        <div className={`p-3 rounded-xl mb-4 ${color} group-hover:scale-110 transition-transform`}>
+            <Icon size={32} className="text-white" />
         </div>
-        <h3 className="text-xl font-bold mb-2 group-hover:text-gradient-6 transition-all duration-300">{title}</h3>
-        <span className="text-xs px-2 py-1 rounded-full bg-white/10 text-gray-400 mb-3 group-hover:bg-cyan-500/20 group-hover:text-cyan-300 transition-colors">{level}</span>
+        <h3 className="text-xl font-bold mb-2">{title}</h3>
+        <span className="text-xs px-2 py-1 rounded-full bg-white/10 text-gray-400 mb-3">{level}</span>
         <div className="flex flex-wrap gap-2 flex-1">
             {skills.map((skill, i) => (
-                <motion.span
-                    key={i}
-                    whileHover={{ scale: 1.1, y: -2 }}
-                    className="text-xs px-2 py-1 rounded bg-white/5 text-gray-300 border border-white/5 hover:border-cyan-500/50 transition-colors"
-                >
+                <span key={i} className="text-xs px-2 py-1 rounded bg-white/5 text-gray-300 border border-white/5 hover:border-cyan-500/50 transition-colors">
                     {skill}
-                </motion.span>
+                </span>
             ))}
         </div>
     </motion.div>

@@ -91,12 +91,12 @@ export const QuoteDisplay = () => {
         <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="flex flex-col items-center max-w-2xl mx-auto my-8 p-6 rounded-2xl bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-center"
+            className="flex flex-col items-center max-w-2xl mx-auto my-8 p-6 rounded-2xl bg-white/5 border border-white/10 text-center"
         >
-            <Quote size={24} className="text-cyan-600 dark:text-cyan-400 mb-4 opacity-50" />
-            <p className="text-lg md:text-xl text-gray-700 dark:text-gray-200 font-light italic mb-4">"{quote.text}"</p>
+            <Quote size={24} className="text-cyan-400 mb-4 opacity-50" />
+            <p className="text-lg md:text-xl text-gray-200 font-light italic mb-4">"{quote.text}"</p>
             <div className="w-12 h-px bg-gradient-to-r from-transparent via-cyan-500 to-transparent mb-2" />
-            <p className="text-sm text-cyan-600 dark:text-cyan-400 font-mono tracking-wider">— {quote.author}</p>
+            <p className="text-sm text-cyan-400 font-mono tracking-wider">— {quote.author}</p>
         </motion.div>
     );
 };

@@ -22,29 +22,18 @@ const ProjectCard = ({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, margin: "-100px" }}
             transition={{ duration: 0.6 }}
-            whileHover={{ y: -10 }}
-            className="glass-panel rounded-3xl p-8 overflow-hidden relative group cursor-pointer transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] dark:hover:shadow-[0_20px_50px_rgba(8,145,178,0.2)]"
+            className="glass-panel rounded-3xl p-8 overflow-hidden relative group cursor-pointer"
             onClick={() => setIsExpanded(!isExpanded)}
         >
-            <div className={`absolute top-0 right-0 w-32 h-32 ${color} opacity-20 blur-[50px] rounded-full group-hover:opacity-40 transition-opacity duration-700`} />
+            <div className={`absolute top-0 right-0 w-32 h-32 ${color} opacity-20 blur-[50px] rounded-full`} />
 
             <div className="flex items-start justify-between mb-6">
                 <div className="flex items-center gap-4">
-                    <motion.div
-                        className={`w-14 h-14 rounded-xl ${color} bg-opacity-20 flex items-center justify-center flex-shrink-0 relative overflow-hidden`}
-                        animate={{
-                            boxShadow: isExpanded ? ["0 0 0px var(--tw-shadow-color)", "0 0 20px var(--tw-shadow-color)", "0 0 0px var(--tw-shadow-color)"] : "none"
-                        }}
-                    >
-                        <Icon size={28} className="group-hover:scale-125 group-hover:rotate-[360deg] transition-all duration-700 ease-in-out" />
-                        <motion.div
-                            className="absolute inset-0 bg-white/20"
-                            animate={{ x: ["-100%", "100%"] }}
-                            transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                        />
-                    </motion.div>
+                    <div className={`w-14 h-14 rounded-xl ${color} bg-opacity-20 flex items-center justify-center flex-shrink-0`}>
+                        <Icon size={28} />
+                    </div>
                     <div>
-                        <h3 className="text-2xl font-bold group-hover:text-cyan-400 transition-colors">{title}</h3>
+                        <h3 className="text-2xl font-bold">{title}</h3>
                         <p className="text-sm text-gray-400 font-mono">{subtitle}</p>
                         <p className="text-xs text-gray-500 mt-1">{dates}</p>
                     </div>
@@ -56,68 +45,56 @@ const ProjectCard = ({
             {/* Tech Stack */}
             <div className="flex flex-wrap gap-2 mb-4">
                 {techStack.map((tech, i) => (
-                    <motion.span
-                        key={i}
-                        whileHover={{ scale: 1.1, backgroundColor: "rgba(34, 211, 238, 0.2)" }}
-                        className="text-xs px-3 py-1 rounded-full bg-white/10 text-cyan-400 border border-cyan-500/30 transition-all"
-                    >
+                    <span key={i} className="text-xs px-3 py-1 rounded-full bg-white/10 text-cyan-400 border border-cyan-500/30">
                         {tech}
-                    </motion.span>
+                    </span>
                 ))}
             </div>
 
             {/* Expanded Content */}
-            <AnimatePresence>
-                {isExpanded && (
-                    <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: 'auto', opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.4, ease: "easeInOut" }}
-                        className="overflow-hidden"
-                    >
-                        <div className="pt-4 border-t border-white/10 space-y-4">
-                            {impact && (
-                                <motion.div initial={{ x: -20, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ delay: 0.1 }}>
-                                    <h4 className="text-sm font-bold text-purple-400 mb-2">Impact</h4>
-                                    <p className="text-sm text-gray-300">{impact}</p>
-                                </motion.div>
-                            )}
+            <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{
+                    height: isExpanded ? 'auto' : 0,
+                    opacity: isExpanded ? 1 : 0
+                }}
+                className="overflow-hidden"
+            >
+                <div className="pt-4 border-t border-white/10 space-y-4">
+                    {impact && (
+                        <div>
+                            <h4 className="text-sm font-bold text-purple-400 mb-2">Impact</h4>
+                            <p className="text-sm text-gray-300">{impact}</p>
+                        </div>
+                    )}
 
-                            {learned && (
-                                <motion.div initial={{ x: -20, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ delay: 0.2 }}>
-                                    <h4 className="text-sm font-bold text-green-400 mb-2">What I Learned</h4>
-                                    <p className="text-sm text-gray-300">{learned}</p>
-                                </motion.div>
-                            )}
+                    {learned && (
+                        <div>
+                            <h4 className="text-sm font-bold text-green-400 mb-2">What I Learned</h4>
+                            <p className="text-sm text-gray-300">{learned}</p>
+                        </div>
+                    )}
 
-                            {links && (
-                                <motion.div
-                                    initial={{ y: 20, opacity: 0 }}
-                                    animate={{ y: 0, opacity: 1 }}
-                                    transition={{ delay: 0.3 }}
-                                    className="flex gap-3"
-                                >
-                                    {links.github && (
-                                        <a href={links.github} target="_blank" rel="noopener noreferrer" className="text-xs glass-btn px-4 py-2 rounded-lg flex items-center gap-2 group/link" onClick={(e) => e.stopPropagation()}>
-                                            <Github size={14} className="group-hover/link:rotate-12 transition-transform" />
-                                            GitHub
-                                        </a>
-                                    )}
-                                    {links.demo && (
-                                        <a href={links.demo} target="_blank" rel="noopener noreferrer" className="text-xs glass-btn px-4 py-2 rounded-lg flex items-center gap-2 group/link" onClick={(e) => e.stopPropagation()}>
-                                            <ExternalLink size={14} className="group-hover/link:-translate-y-1 transition-transform" />
-                                            Demo
-                                        </a>
-                                    )}
-                                </motion.div>
+                    {links && (
+                        <div className="flex gap-3">
+                            {links.github && (
+                                <a href={links.github} target="_blank" rel="noopener noreferrer" className="text-xs glass-btn px-4 py-2 rounded-lg flex items-center gap-2" onClick={(e) => e.stopPropagation()}>
+                                    <Github size={14} />
+                                    GitHub
+                                </a>
+                            )}
+                            {links.demo && (
+                                <a href={links.demo} target="_blank" rel="noopener noreferrer" className="text-xs glass-btn px-4 py-2 rounded-lg flex items-center gap-2" onClick={(e) => e.stopPropagation()}>
+                                    <ExternalLink size={14} />
+                                    Demo
+                                </a>
                             )}
                         </div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
+                    )}
+                </div>
+            </motion.div>
 
-            <div className="text-xs text-gray-500 mt-4 text-center opacity-0 group-hover:opacity-100 transition-opacity">
+            <div className="text-xs text-gray-500 mt-4 text-center">
                 {isExpanded ? 'Click to collapse' : 'Click to expand details'}
             </div>
         </motion.div>
