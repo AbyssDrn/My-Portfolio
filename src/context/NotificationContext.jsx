@@ -17,6 +17,14 @@ export const NotificationProvider = ({ children }) => {
         }, 4000);
     };
 
+    // Dynamic heading based on notification type
+    const getHeading = () => {
+        if (!notification) return '';
+        if (notification.type === 'cv') return '🎭 Awesome Choice!';
+        if (notification.type === 'resume') return '🚀 Great Decision!';
+        return '✨ Thank You!';
+    };
+
     return (
         <NotificationContext.Provider value={{ showNotification }}>
             {children}
@@ -29,15 +37,19 @@ export const NotificationProvider = ({ children }) => {
                         transition={{ type: "spring", stiffness: 400, damping: 25 }}
                         className="fixed bottom-6 left-6 z-[100] flex items-center gap-4 bg-gradient-to-r from-emerald-500 to-green-600 text-white pl-4 pr-6 py-4 rounded-2xl shadow-2xl border border-white/20 backdrop-blur-md"
                     >
-                        <div className="bg-white/20 p-2 rounded-full">
-                            {notification.message.toLowerCase().includes('cv') ? (
+                        <motion.div
+                            className="bg-white/20 p-2 rounded-full"
+                            animate={{ rotate: [0, 10, -10, 0] }}
+                            transition={{ duration: 0.5, repeat: 2 }}
+                        >
+                            {notification.type === 'cv' ? (
                                 <PartyPopper size={24} className="text-white" />
                             ) : (
                                 <CheckCircle size={24} className="text-white" />
                             )}
-                        </div>
+                        </motion.div>
                         <div>
-                            <h4 className="font-bold text-lg">Thank You!</h4>
+                            <h4 className="font-bold text-lg">{getHeading()}</h4>
                             <p className="text-sm text-green-50 font-medium">{notification.message}</p>
                         </div>
 

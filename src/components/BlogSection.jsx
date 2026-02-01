@@ -94,9 +94,14 @@ export const BlogSection = () => {
                             <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
                             <div className="space-y-4">
                                 <div className="flex items-center gap-3">
-                                    <div className="w-10 h-10 rounded-full bg-cyan-500/20 flex items-center justify-center">
+                                    <motion.div
+                                        className="w-10 h-10 rounded-full bg-cyan-500/20 flex items-center justify-center"
+                                        whileHover={{ scale: 1.15, rotate: 360 }}
+                                        animate={{ y: [0, -3, 0] }}
+                                        transition={{ y: { duration: 2, repeat: Infinity, ease: "easeInOut" } }}
+                                    >
                                         <Mail size={18} className="text-cyan-400" />
-                                    </div>
+                                    </motion.div>
                                     <div>
                                         <p className="text-sm text-gray-400">Email</p>
                                         <a href="mailto:amalmadhu04022001@gmail.com" className="text-white hover:text-cyan-400 transition-colors">
@@ -106,9 +111,14 @@ export const BlogSection = () => {
                                 </div>
 
                                 <div className="flex items-center gap-3">
-                                    <div className="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center">
+                                    <motion.div
+                                        className="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center"
+                                        whileHover={{ scale: 1.15, rotate: [0, -10, 10, 0] }}
+                                        animate={{ y: [0, -3, 0] }}
+                                        transition={{ y: { duration: 2.5, repeat: Infinity, ease: "easeInOut", delay: 0.2 } }}
+                                    >
                                         <Phone size={18} className="text-purple-400" />
-                                    </div>
+                                    </motion.div>
                                     <div>
                                         <p className="text-sm text-gray-400">Phone</p>
                                         <a href="tel:+918921470483" className="text-white hover:text-purple-400 transition-colors">
@@ -118,9 +128,14 @@ export const BlogSection = () => {
                                 </div>
 
                                 <div className="flex items-center gap-3">
-                                    <div className="w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center">
+                                    <motion.div
+                                        className="w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center"
+                                        whileHover={{ scale: 1.15, y: -5 }}
+                                        animate={{ y: [0, -3, 0] }}
+                                        transition={{ y: { duration: 3, repeat: Infinity, ease: "easeInOut", delay: 0.4 } }}
+                                    >
                                         <MapPin size={18} className="text-emerald-400" />
-                                    </div>
+                                    </motion.div>
                                     <div>
                                         <p className="text-sm text-gray-400">Location</p>
                                         <p className="text-white">Mangalapuram, Kerala</p>
@@ -129,12 +144,26 @@ export const BlogSection = () => {
                                 </div>
 
                                 <div className="flex gap-4 mt-6">
-                                    <a href="https://github.com/AbyssDrn" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full glass-btn flex items-center justify-center hover:scale-110 transition-transform">
+                                    <motion.a
+                                        href="https://github.com/AbyssDrn"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="w-12 h-12 rounded-full glass-btn flex items-center justify-center"
+                                        whileHover={{ scale: 1.2, rotate: 360 }}
+                                        transition={{ duration: 0.5 }}
+                                    >
                                         <Github size={20} />
-                                    </a>
-                                    <a href="https://www.linkedin.com/in/amal-madhu-48042a20a" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full glass-btn flex items-center justify-center hover:scale-110 transition-transform">
+                                    </motion.a>
+                                    <motion.a
+                                        href="https://www.linkedin.com/in/amal-madhu-48042a20a"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="w-12 h-12 rounded-full glass-btn flex items-center justify-center"
+                                        whileHover={{ scale: 1.2, rotate: -360 }}
+                                        transition={{ duration: 0.5 }}
+                                    >
                                         <Linkedin size={20} />
-                                    </a>
+                                    </motion.a>
                                 </div>
                             </div>
                         </motion.div>
@@ -153,7 +182,7 @@ export const BlogSection = () => {
                                 <a
                                     href={resumePdf}
                                     download="Amal_Madhu_Resume.pdf"
-                                    onClick={() => showNotification("Still Improving... it keeps on progressing as day passes... 🚀")}
+                                    onClick={() => showNotification("🚀 Buckle up! My journey awaits... (Still polishing the rocket fuel!)", "resume")}
                                     className="glass-btn px-6 py-3 rounded-full font-medium hover:scale-105 transition-transform cursor-pointer text-center"
                                 >
                                     Download Resume
@@ -161,7 +190,7 @@ export const BlogSection = () => {
                                 <a
                                     href={cvPdf}
                                     download="Amal_Madhu_CV.pdf"
-                                    onClick={() => showNotification("Still Improving... it keeps on progressing as day passes... 🎉")}
+                                    onClick={() => showNotification("📜 Unfolding my story... plot twist: it gets better every chapter! 🎭", "cv")}
                                     className="glass-btn px-6 py-3 rounded-full font-medium hover:scale-105 transition-transform cursor-pointer text-center"
                                 >
                                     Download CV

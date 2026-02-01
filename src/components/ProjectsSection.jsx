@@ -29,9 +29,26 @@ const ProjectCard = ({
 
             <div className="flex items-start justify-between mb-6">
                 <div className="flex items-center gap-4">
-                    <div className={`w-14 h-14 rounded-xl ${color} bg-opacity-20 flex items-center justify-center flex-shrink-0`}>
-                        <Icon size={28} />
-                    </div>
+                    <motion.div
+                        className={`w-14 h-14 rounded-xl ${color} bg-opacity-20 flex items-center justify-center flex-shrink-0`}
+                        whileHover={{
+                            scale: 1.2,
+                            rotateY: 180,
+                            transition: { duration: 0.6 }
+                        }}
+                        animate={{
+                            rotateZ: [0, 5, -5, 0],
+                        }}
+                        transition={{
+                            rotateZ: { duration: 4, repeat: Infinity, ease: "easeInOut" }
+                        }}
+                    >
+                        <motion.div
+                            whileHover={{ scale: 1.3 }}
+                        >
+                            <Icon size={28} />
+                        </motion.div>
+                    </motion.div>
                     <div>
                         <h3 className="text-2xl font-bold">{title}</h3>
                         <p className="text-sm text-gray-400 font-mono">{subtitle}</p>
@@ -45,9 +62,16 @@ const ProjectCard = ({
             {/* Tech Stack */}
             <div className="flex flex-wrap gap-2 mb-4">
                 {techStack.map((tech, i) => (
-                    <span key={i} className="text-xs px-3 py-1 rounded-full bg-white/10 text-cyan-400 border border-cyan-500/30">
+                    <motion.span
+                        key={i}
+                        className="text-xs px-3 py-1 rounded-full bg-white/10 text-cyan-400 border border-cyan-500/30"
+                        whileHover={{ scale: 1.1, borderColor: 'rgba(6, 182, 212, 0.6)' }}
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: i * 0.05 }}
+                    >
                         {tech}
-                    </span>
+                    </motion.span>
                 ))}
             </div>
 

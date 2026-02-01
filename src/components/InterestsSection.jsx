@@ -10,16 +10,36 @@ const InterestCard = ({ icon: Icon, title, items, color }) => (
         whileHover={{ scale: 1.05, rotateZ: 2 }}
         className="glass-panel p-6 rounded-2xl cursor-pointer"
     >
-        <div className={`w-12 h-12 rounded-xl ${color} bg-opacity-20 flex items-center justify-center mb-4`}>
+        <motion.div
+            className={`w-12 h-12 rounded-xl ${color} bg-opacity-20 flex items-center justify-center mb-4`}
+            whileHover={{
+                scale: 1.2,
+                rotate: [0, -10, 10, -10, 10, 0],
+                transition: { duration: 0.5 }
+            }}
+            animate={{
+                y: [0, -8, 0],
+            }}
+            transition={{
+                y: { duration: 2.5, repeat: Infinity, ease: "easeInOut" }
+            }}
+        >
             <Icon size={24} />
-        </div>
+        </motion.div>
         <h3 className="text-xl font-bold mb-3">{title}</h3>
         <ul className="space-y-2 text-sm text-gray-300">
             {items.map((item, i) => (
-                <li key={i} className="flex items-start gap-2">
+                <motion.li
+                    key={i}
+                    className="flex items-start gap-2"
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.05 }}
+                    whileHover={{ x: 5 }}
+                >
                     <span className="text-cyan-400 mt-0.5">▹</span>
                     <span>{item}</span>
-                </li>
+                </motion.li>
             ))}
         </ul>
     </motion.div>

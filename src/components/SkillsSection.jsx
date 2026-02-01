@@ -11,16 +11,36 @@ const SkillCard = ({ icon: Icon, title, skills, color, level }) => (
         transition={{ duration: 0.5 }}
         className="glass-panel p-6 rounded-2xl h-full border border-white/5 flex flex-col items-start min-h-[240px] cursor-pointer group"
     >
-        <div className={`p-3 rounded-xl mb-4 ${color} group-hover:scale-110 transition-transform`}>
+        <motion.div
+            className={`p-3 rounded-xl mb-4 ${color}`}
+            whileHover={{
+                scale: 1.15,
+                rotate: [0, -10, 10, -10, 0],
+                transition: { duration: 0.5 }
+            }}
+            animate={{
+                y: [0, -5, 0],
+            }}
+            transition={{
+                y: { duration: 2, repeat: Infinity, ease: "easeInOut" }
+            }}
+        >
             <Icon size={32} className="text-white" />
-        </div>
+        </motion.div>
         <h3 className="text-xl font-bold mb-2">{title}</h3>
         <span className="text-xs px-2 py-1 rounded-full bg-white/10 text-gray-400 mb-3">{level}</span>
         <div className="flex flex-wrap gap-2 flex-1">
             {skills.map((skill, i) => (
-                <span key={i} className="text-xs px-2 py-1 rounded bg-white/5 text-gray-300 border border-white/5 hover:border-cyan-500/50 transition-colors">
+                <motion.span
+                    key={i}
+                    className="text-xs px-2 py-1 rounded bg-white/5 text-gray-300 border border-white/5 hover:border-cyan-500/50 transition-colors"
+                    whileHover={{ scale: 1.1, y: -2 }}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.05 }}
+                >
                     {skill}
-                </span>
+                </motion.span>
             ))}
         </div>
     </motion.div>

@@ -144,6 +144,11 @@ html.light h5 {
   text-shadow: none;
 }
 
+/* Light mode quote and greeting visibility */
+html.light .text-gray-200 {
+  color: #374151 !important;
+}
+
 html.light .text-gray-300 {
   color: #4b5563 !important;
 }
@@ -172,6 +177,111 @@ html.light .text-gradient-6 {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+/* ============= MODERN ANIMATIONS FOR ICONS ============= */
+@keyframes wiggle {
+
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+
+  25% {
+    transform: rotate(-5deg);
+  }
+
+  75% {
+    transform: rotate(5deg);
+  }
+}
+
+@keyframes bounce-subtle {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes glow-pulse {
+
+  0%,
+  100% {
+    filter: drop-shadow(0 0 2px currentColor);
+    opacity: 1;
+  }
+
+  50% {
+    filter: drop-shadow(0 0 8px currentColor);
+    opacity: 0.8;
+  }
+}
+
+@keyframes shake {
+
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(-4px);
+  }
+
+  75% {
+    transform: translateX(4px);
+  }
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes tilt-3d {
+
+  0%,
+  100% {
+    transform: perspective(400px) rotateY(0deg);
+  }
+
+  50% {
+    transform: perspective(400px) rotateY(10deg);
+  }
+}
+
+.animate-wiggle {
+  animation: wiggle 0.5s ease-in-out;
+}
+
+.animate-bounce-subtle {
+  animation: bounce-subtle 0.6s ease-in-out;
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+.animate-shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 3s linear infinite;
+}
+
+.animate-tilt-3d {
+  animation: tilt-3d 1s ease-in-out;
 }
 
 /* Specific override for badge in light mode - SOLID OPAQUE */

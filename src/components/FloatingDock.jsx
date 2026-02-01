@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Home, User, Eye, Brain, FolderGit2, GraduationCap, Heart, BookOpen, Mail, Sun, Moon } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
@@ -17,6 +17,23 @@ const navItems = [
 
 export const FloatingDock = () => {
     const { isDark, toggleTheme } = useTheme();
+    const [showTooltips, setShowTooltips] = useState(true);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const homeSection = document.getElementById('home');
+            if (homeSection) {
+                const rect = homeSection.getBoundingClientRect();
+                const isInHomeSection = rect.top < window.innerHeight && rect.bottom > 0;
+                setShowTooltips(isInHomeSection);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        handleScroll(); // Check initial state
+
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     const scrollToSection = (id) => {
         const element = document.getElementById(id);
@@ -43,10 +60,18 @@ export const FloatingDock = () => {
                             <item.icon size={16} className="md:w-[18px] md:h-[18px]" />
                         </div>
 
-                        {/* Tooltip - Hidden on mobile, visible on desktop hover */}
-                        <span className="hidden md:block absolute -bottom-8 opacity-0 group-hover:opacity-100 transition-opacity text-xs font-mono bg-black/80 px-2 py-1 rounded text-white whitespace-nowrap pointer-events-none">
+                        {/* Tooltip - Only visible in home section */}
+                        <motion.span
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: showTooltips ? 0 : 0 }}
+                            className="hidden md:block absolute -bottom-8 group-hover:opacity-100 transition-opacity text-xs font-mono bg-black/80 px-2 py-1 rounded text-white whitespace-nowrap pointer-events-none"
+                            style={{
+                                opacity: showTooltips ? undefined : 0,
+                                pointerEvents: 'none'
+                            }}
+                        >
                             {item.label}
-                        </span>
+                        </motion.span>
                     </button>
                 ))}
             </div>
@@ -63,9 +88,17 @@ export const FloatingDock = () => {
                         {isDark ? <Sun size={16} className="md:w-[18px] md:h-[18px]" /> : <Moon size={16} className="md:w-[18px] md:h-[18px]" />}
                     </div>
 
-                    <span className="hidden md:block absolute -bottom-8 opacity-0 group-hover:opacity-100 transition-opacity text-xs font-mono bg-black/80 px-2 py-1 rounded text-white whitespace-nowrap pointer-events-none">
+                    <motion.span
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: showTooltips ? 0 : 0 }}
+                        className="hidden md:block absolute -bottom-8 group-hover:opacity-100 transition-opacity text-xs font-mono bg-black/80 px-2 py-1 rounded text-white whitespace-nowrap pointer-events-none"
+                        style={{
+                            opacity: showTooltips ? undefined : 0,
+                            pointerEvents: 'none'
+                        }}
+                    >
                         {isDark ? 'Light' : 'Dark'}
-                    </span>
+                    </motion.span>
                 </button>
             </div>
         </motion.div>
