@@ -13,6 +13,7 @@ import { ProjectsSection } from './components/ProjectsSection';
 import { EducationSection } from './components/EducationSection';
 import { InterestsSection } from './components/InterestsSection';
 import { BlogSection } from './components/BlogSection';
+import { CosmicBackground } from './components/CosmicBackground';
 
 function App() {
   const { scrollYProgress } = useScroll();
@@ -71,6 +72,9 @@ function App() {
 
           {/* Dark Mode Extension Detector */}
           <DarkModeExtensionDetector />
+
+          {/* Cosmic Background - Global across all sections */}
+          <CosmicBackground />
 
           {/* Dynamic Background - only show in dark mode */}
           <div className="fixed inset-0 pointer-events-none -z-10 dark-mode-bg" />

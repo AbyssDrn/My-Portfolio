@@ -8,16 +8,12 @@ import cvPdf from '../../public/cv.pdf';
 import { useNotification } from '../context/NotificationContext';
 import { TimeGreeting } from './TimeGreeting';
 import { QuoteDisplay } from './QuoteDisplay';
-import { CosmicBackground } from './CosmicBackground';
 
 export const HeroSection = () => {
     const { showNotification } = useNotification();
 
     return (
         <section id="home" className="min-h-screen w-full flex flex-col items-center justify-center relative overflow-hidden pt-32 pb-20">
-            {/* Cosmic Space Background */}
-            <CosmicBackground />
-
             {/* Time-based Multi-language Greeting */}
             <TimeGreeting />
 
