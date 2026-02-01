@@ -173,8 +173,9 @@ export const BlogSection = () => {
 
                 {/* Footer */}
                 <footer className="w-full text-center text-gray-600 text-sm mt-24 pb-8 font-mono border-t border-white/5 pt-8">
-                    <p>© 2026 Amal Madhu | Last Updated: Jan 31, 2026</p>
+                    <p>© 2026 Amal Madhu | Last Updated: Feb 01, 2026</p>
                 </footer>
             </div>
         </section>
-    );    
+    );
+};
