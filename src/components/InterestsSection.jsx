@@ -4,24 +4,58 @@ import { Bike, Palette, BookOpen, Gamepad2, Trophy, Languages } from 'lucide-rea
 
 const InterestCard = ({ icon: Icon, title, items, color }) => (
     <motion.div
-        initial={{ opacity: 0, scale: 0.9 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: false, margin: "-100px" }}
-        whileHover={{ scale: 1.05, rotateZ: 2 }}
-        className="glass-panel p-6 rounded-2xl cursor-pointer"
+        initial={{ opacity: 0, scale: 0.9, y: 20 }}
+        whileInView={{ opacity: 1, scale: 1, y: 0 }}
+        viewport={{ once: false, margin: "-50px" }}
+        whileHover={{
+            scale: 1.05,
+            rotateZ: 1,
+            boxShadow: "0 20px 40px rgba(0,0,0,0.2)"
+        }}
+        transition={{ type: "spring", stiffness: 300, damping: 20 }}
+        className="glass-panel p-6 rounded-2xl cursor-pointer group border border-white/5 hover:border-white/20 relative overflow-hidden"
     >
-        <div className={`w-12 h-12 rounded-xl ${color} bg-opacity-20 flex items-center justify-center mb-4`}>
-            <Icon size={24} />
+        <div className={`w-14 h-14 rounded-xl ${color} bg-opacity-20 flex items-center justify-center mb-6 relative z-10 overflow-hidden`}>
+            <Icon
+                size={28}
+                className="group-hover:scale-110 group-hover:rotate-12 transition-all duration-500"
+                style={{ filter: "drop-shadow(0 0 8px currentColor)" }}
+            />
+            <motion.div
+                className="absolute inset-0 bg-white/10"
+                animate={{
+                    scale: [1, 1.2, 1],
+                    opacity: [0.1, 0.3, 0.1]
+                }}
+                transition={{ duration: 4, repeat: Infinity }}
+            />
         </div>
-        <h3 className="text-xl font-bold mb-3">{title}</h3>
-        <ul className="space-y-2 text-sm text-gray-300">
+        <h3 className="text-xl font-bold mb-4 group-hover:text-gradient-6 transition-all">{title}</h3>
+        <ul className="space-y-3 text-sm text-gray-300">
             {items.map((item, i) => (
-                <li key={i} className="flex items-start gap-2">
-                    <span className="text-cyan-400 mt-0.5">▹</span>
-                    <span>{item}</span>
-                </li>
+                <motion.li
+                    key={i}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.1 }}
+                    className="flex items-start gap-3 group/item"
+                >
+                    <span className="text-cyan-400 mt-0.5 group-hover/item:scale-150 group-hover/item:rotate-[360deg] transition-all duration-500">▹</span>
+                    <span className="group-hover/item:text-white transition-colors">{item}</span>
+                </motion.li>
             ))}
         </ul>
+
+        {/* Floating background shape */}
+        <motion.div
+            className={`absolute -right-4 -bottom-4 w-24 h-24 ${color} opacity-5 rounded-full blur-2xl`}
+            animate={{
+                scale: [1, 1.2, 1],
+                x: [0, 10, 0],
+                y: [0, 5, 0]
+            }}
+            transition={{ duration: 5, repeat: Infinity }}
+        />
     </motion.div>
 );
 

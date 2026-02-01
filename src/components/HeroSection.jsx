@@ -198,7 +198,7 @@ export const HeroSection = () => {
                     <a
                         href={resumePdf}
                         download="Amal_Madhu_Resume.pdf"
-                        onClick={() => showNotification("Still Improving... it keeps on progressing as day passes... 🚀")}
+                        onClick={() => showNotification("Resume incoming! 🚀 Warning: May contain traces of excessive ambition.")}
                         className="glass-btn px-8 py-3 rounded-full flex items-center gap-2 text-white font-medium group"
                     >
                         <Download size={18} className="group-hover:-translate-y-1 transition-transform" />
@@ -207,7 +207,7 @@ export const HeroSection = () => {
                     <a
                         href={cvPdf}
                         download="Amal_Madhu_CV.pdf"
-                        onClick={() => showNotification("Still Improving... it keeps on progressing as day passes... 🎉")}
+                        onClick={() => showNotification("CV acquired! 🎉 Future-proofing your team in 3... 2... 1...")}
                         className="glass-btn px-8 py-3 rounded-full flex items-center gap-2 text-white font-medium group"
                     >
                         <FileText size={18} className="group-hover:-translate-y-1 transition-transform" />
